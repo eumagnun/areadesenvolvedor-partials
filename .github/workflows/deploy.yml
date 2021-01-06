@@ -26,6 +26,13 @@ jobs:
         path: vendor/bundle
         key: gems-${{ runner.os }}-${{ env.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
 
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+
+    - run: npm install -g widdershins
+    - run: widdershins source/swagger/swagger_open_banking_apis.yaml -o source/includes/partials_open_banking/_open_banking_apis.md.erb --language_tabs "javascript:JavaScript" --omitHeader --summary
+
     - run: bundle config set deployment 'true'
     - run: bundle install
 
