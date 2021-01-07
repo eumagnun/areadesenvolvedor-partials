@@ -1,24 +1,279 @@
 ﻿openapi: 3.0.0
 info:
-  title: API's OpenData do Open Banking Brasil
-  description: As API's descritas neste documento são referentes as API's da fase OpenData do Open Banking Brasil.
-  version: 1.0.0-rc5
+  title: APIs do Open Banking Brasil
+  description: ""
+  version: 3.0.1
   contact:
-    email: apiteam@swagger.io
+    email: "apiteam@swagger.io"
 servers:
-  - url: 'http://api.banco.com.br/open-banking/products-services/v2'
+  - url: 'http://api.banco.com.br/open-banking'
 tags:
-  - name: Accounts
-  - name: Loans
-  - name: Credit Cards
-  - name: Financings
-  - name: Invoice Financings
-  - name: Unarranged Account Overdraft
+  - name: APIs Comuns
+  - name: API - Canais de Atendimento
+  - name: API - Produtos e Serviços
+  - name: API - Admin
 paths:
-  /personal-accounts:
+  /discovery/v1/status:
     get:
       tags:
-        - Accounts
+        - APIs Comuns
+      summary: API de Status
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar estatísticas operacionais das APIs disponibilizadas pelas instituições financeiras, a fim de avaliar a qualidade dos serviços fornecidos ao usuário final.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getStatus"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de descrição e código de status retornado pelas APIs obtida com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDiscoveryStatusList'
+  /discovery/v1/outages:
+    get:
+      tags:
+        - APIs Comuns
+      summary: API de Outages
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtêm a lista de indisponibilidade agendada para os serviços.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getOutage"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de indisponilidade agendada obtida com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDiscoveryOutageList'
+  /channels/v1/banking-agents:
+    get:
+      tags:
+        - API - Canais de Atendimento
+      summary: Correspondentes bancários
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de Correspondentes bancários.
+
+        ### Visão de alto nível das estruturas de dados
+        <img src="images/tld/TLD_Banking_Agents_v1.png">
+
+        ### Dicionário de dados
+
+        <a href='dictionary/banking_agents.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getBankingAgents"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de correspondentes bancários obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBankingAgentsList'
+  /channels/v1/branches:
+    get:
+      tags:
+        - API - Canais de Atendimento
+      summary: Dependências próprias
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de dependências próprias da instituição financeira.
+
+        Dependência própria é o espaço físico destinado ao atendimento ao público.
+
+        Tags: [Agência (Branch)](#glossarioAgencia), [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Dependência (Branch)](#glossarioDependencia), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Posto de Atendimento Bancário - PAB (Branch)](#glossarioPostoAtendimentoBancario), [Posto de Atendimento Eletrônico – PAE (Branch)](#glossarioPostoAtendimentoEletronico) e [Unidade Administrativa Desmembrada – UAD (Branch)](#glossarioUnidadeAdministrativaDesmembrada).
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Branches_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/branches.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getBranches"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de dependências próprias obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBranchesList'
+  /channels/v1/electronic-channels:
+    get:
+      tags:
+        - API - Canais de Atendimento
+      summary: Canais de atendimento eletrônico
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de canais eletrônicos próprios da instituição financeira.
+
+        Esse *endpoint* retorna os possíveis canais de atendimento eletrônico, bem como suas informações, serviços prestados e formas de acesso.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
+
+        ### Visão de alto nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_ElectronicChannels_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/electronic_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getElectronicChannels"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de canais eletrônicos de atendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseElectronicChannelsList'
+  /channels/v1/phone-channels:
+    get:
+      tags:
+        - API - Canais de Atendimento
+      summary: Canais de atendimento telefônico
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+
+        ### Visão Geral
+
+        Obtém a lista de canais telefônicos próprios da instituição financeira.
+
+        Esse *endpoint* retorna os possíveis canais de atendimento telefônico bem como suas informações, serviços prestados e formas de acesso.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
+
+        ### Visão de alto nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_PhoneChannels_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/phone_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getPhoneChannels"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de canais telefônicos de atendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePhoneChannelsList'
+  /channels/v1/shared-automated-teller-machines:
+    get:
+      tags:
+        - API - Canais de Atendimento
+      summary: Terminais de Autoatendimento Compartilhado
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de terminais compartilhados de autoatendimento da instituição financeira.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Terminais de Autoatendimento Compartilhados (Shared Automatic Teller Machine)](#glossarioTerminaisAutoAtendimentoCompartilhados).
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Shared_Automated_Teller_Machines_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/automated_teller_machines.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getSharedAutomatedTellerMachines"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de terminais compartilhados de autoatendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSharedAutomatedTellerMachinesList'
+  /products-services/v1/personal-accounts:
+    get:
+      tags:
+        - API - Produtos e Serviços
       summary: Contas pessoa natural
       description: |
         |Versão|
@@ -44,6 +299,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalAccounts
       parameters:
         - $ref: "#/components/parameters/page"
@@ -55,10 +311,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsePersonalAccounts'
-  /business-accounts:
+  /products-services/v1/business-accounts:
     get:
       tags:
-        - Accounts
+        - API - Produtos e Serviços
       summary: Contas pessoa jurídica
       description: |
         |Versão|
@@ -84,6 +340,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessAccounts
       parameters:
         - $ref: "#/components/parameters/page"
@@ -95,10 +352,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessAccounts'
-  /personal-loans:
+  /products-services/v1/personal-loans:
     get:
       tags:
-        - Loans
+        - API - Produtos e Serviços
       summary: Empréstimos pessoa natural
       description: |
         Obtém dados sobre empréstimos pessoa natural
@@ -126,6 +383,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalLoans
       parameters:
         - $ref: "#/components/parameters/page"
@@ -137,10 +395,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsePersonalLoans'
-  /business-loans:
+  /products-services/v1/business-loans:
     get:
       tags:
-        - Loans
+        - API - Produtos e Serviços
       summary: Empréstimos pessoa jurídica
       description: |
         |Versão|
@@ -166,6 +424,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessLoans
       parameters:
         - $ref: "#/components/parameters/page"
@@ -177,10 +436,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessLoans'
-  /personal-credit-cards:
+  /products-services/v1/personal-credit-cards:
     get:
       tags:
-        - Credit Cards
+        - API - Produtos e Serviços
       summary: Cartão de crédito de pessoa natural
       description: |
         |Versão|
@@ -204,6 +463,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalCreditCards
       parameters:
         - $ref: "#/components/parameters/page"
@@ -215,10 +475,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PersonalCreditCardResponse'
-  /business-credit-cards:
+  /products-services/v1/business-credit-cards:
     get:
       tags:
-        - Credit Cards
+        - API - Produtos e Serviços
       summary: Cartão de crédito de pessoa jurídica
       description: |
         |Versão|
@@ -242,6 +502,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessCreditCards
       parameters:
         - $ref: "#/components/parameters/page"
@@ -253,10 +514,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BusinessCreditCardResponse'
-  /personal-financings:
+  /products-services/v1/personal-financings:
     get:
       tags:
-        - Financings
+        - API - Produtos e Serviços
       summary: Financiamento Pessoa Natural
       description: |
         |Versão|
@@ -282,6 +543,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalFinancings
       parameters:
         - $ref: "#/components/parameters/page"
@@ -293,10 +555,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsePersonalFinancings'
-  /business-financings:
+  /products-services/v1/business-financings:
     get:
       tags:
-        - Financings
+        - API - Produtos e Serviços
       summary: Financiamento Pessoa Jurídica
       description: |
         |Versão|
@@ -322,6 +584,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessFinancings
       parameters:
         - $ref: "#/components/parameters/page"
@@ -333,10 +596,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessFinancings'
-  /personal-invoice-financings:
+  /products-services/v1/personal-invoice-financings:
     get:
       tags:
-        - Invoice Financings
+        - API - Produtos e Serviços
       summary: Antecipação de recebíveis Pessoa Natural
       description: |
         |Versão|
@@ -362,6 +625,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalInvoiceFinancings
       parameters:
         - $ref: "#/components/parameters/page"
@@ -373,10 +637,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsePersonalInvoiceFinancings'
-  /business-invoice-financings:
+  /products-services/v1/business-invoice-financings:
     get:
       tags:
-        - Invoice Financings
+        - API - Produtos e Serviços
       summary: Antecipação de recebíveis Pessoa Jurídica
       description: |
         |Versão|
@@ -402,6 +666,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessInvoiceFinancings
       parameters:
         - $ref: "#/components/parameters/page"
@@ -413,10 +678,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessInvoiceFinancings'
-  /personal-unarranged-account-overdraft:
+  /products-services/v1/personal-unarranged-account-overdraft:
     get:
       tags:
-        - Unarranged Account Overdraft
+        - API - Produtos e Serviços
       summary: Adiantamento a Depositante Pessoa Natural
       description: |
         |Versão|
@@ -443,6 +708,7 @@ paths:
         ### Especificação em OAS 3.0
 
         <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getPersonalUnarrangedAccountOverdraft
       parameters:
         - $ref: "#/components/parameters/page"
@@ -454,10 +720,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponsePersonalUnarrangedAccountOverdraft'
-  /business-unarranged-account-overdraft:
+  /products-services/v1/business-unarranged-account-overdraft:
     get:
       tags:
-        - Unarranged Account Overdraft
+        - API - Produtos e Serviços
       summary: Adiantamento a Depositante Pessoa Jurídica
       description: |
         |Versão|
@@ -496,6 +762,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessUnarrangedAccountOverdraft'
+  /admin/v1/metrics:
+    get:
+      tags:
+        - API - Admin
+      summary: Métricas
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar estatísticas operacionais das APIs disponibilizadas pelas instituições financeiras, a fim de avaliar a qualidade dos serviços fornecidos ao usuário final.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getMetrics"
+      parameters:
+        - in: query
+          name: period
+          schema:
+            type: string
+            enum:
+              - CURRENT
+              - ALL
+          required: false
+          description: |
+            Período a ser consultado
+              * `CURRENT` - Métricas do dia atual.
+              * `ALL` - Métricas de todo o período disponível.
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados das métricas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMetricsList'
 components:
   schemas:
     AccountFee:
@@ -516,6 +823,46 @@ components:
       $ref: ./schemas/ApplicationIntervals.yaml
     ApplicationRate:
       $ref: ./schemas/ApplicationRate.yaml
+    AvailabilityMetrics:
+      $ref: ./schemas/AvailabilityMetrics.yaml
+    AverageMetrics:
+      $ref: ./schemas/AverageMetrics.yaml
+    AverageTPSMetrics:
+      $ref: ./schemas/AverageTPSMetrics.yaml
+    BankingAgent:
+      $ref: ./schemas/BankingAgent.yaml
+    BankingAgentAvailability:
+      $ref: ./schemas/BankingAgentAvailability.yaml
+    BankingAgentIdentification:
+      $ref: ./schemas/BankingAgentIdentification.yaml
+    BankingAgentLocation:
+      $ref: ./schemas/BankingAgentLocation.yaml
+    BankingAgentPostalAddress:
+      $ref: ./schemas/BankingAgentPostalAddress.yaml
+    BankingAgentService:
+      $ref: ./schemas/BankingAgentService.yaml
+    BankingAgentsBrand:
+      $ref: ./schemas/BankingAgentsBrand.yaml
+    BankingAgentsCompanies:
+      $ref: ./schemas/BankingAgentsCompanies.yaml
+    BankingAgentsContractor:
+      $ref: ./schemas/BankingAgentsContractor.yaml
+    Branch:
+      $ref: ./schemas/Branch.yaml
+    BranchAvailability:
+      $ref: ./schemas/BranchAvailability.yaml
+    BranchIdentification:
+      $ref: ./schemas/BranchIdentification.yaml
+    BranchPhone:
+      $ref: ./schemas/BranchPhone.yaml
+    BranchPostalAddress:
+      $ref: ./schemas/BranchPostalAddress.yaml
+    BranchService:
+      $ref: ./schemas/BranchService.yaml
+    BranchesBrand:
+      $ref: ./schemas/BranchesBrand.yaml
+    BranchesCompany:
+      $ref: ./schemas/BranchesCompany.yaml
     Brand:
       $ref: ./schemas/Brand.yaml
     BusinessAccounts:
@@ -586,18 +933,40 @@ components:
       $ref: ./schemas/Currency.yaml
     Customer:
       $ref: ./schemas/Customer.yaml
+    ElectronicChannel:
+      $ref: ./schemas/ElectronicChannel.yaml
+    ElectronicChannelIdentification:
+      $ref: ./schemas/ElectronicChannelIdentification.yaml
+    ElectronicChannelService:
+      $ref: ./schemas/ElectronicChannelService.yaml
+    ElectronicChannelUrl:
+      $ref: ./schemas/ElectronicChannelUrl.yaml
+    ElectronicChannelsBrand:
+      $ref: ./schemas/ElectronicChannelsBrand.yaml
+    ElectronicChannelsCompanies:
+      $ref: ./schemas/ElectronicChannelsCompanies.yaml
+    EndpointDowntime:
+      $ref: ./schemas/EndpointDowntime.yaml
+    EndpointUptime:
+      $ref: ./schemas/EndpointUptime.yaml
+    ErrorMetrics:
+      $ref: ./schemas/ErrorMetrics.yaml
     FeeReferentialRateIndexer:
       $ref: ./schemas/FeeReferentialRateIndexer.yaml
     FinancingInterestRate:
       $ref: ./schemas/FinancingInterestRate.yaml
     FinancingService:
       $ref: ./schemas/FinancingService.yaml
+    GeographicCoordinates:
+      $ref: ./schemas/GeographicCoordinates.yaml
     Indexer:
       $ref: ./schemas/Indexer.yaml
     InterestRate:
       $ref: ./schemas/InterestRate.yaml
     InterestRateFee:
       $ref: ./schemas/InterestRateFee.yaml
+    InvocationMetrics:
+      $ref: ./schemas/InvocationMetrics.yaml
     InvoiceFinancingsService:
       $ref: ./schemas/InvoiceFinancingsService.yaml
     Links:
@@ -620,6 +989,8 @@ components:
       $ref: ./schemas/MonthlyPrice.yaml
     OpeningClosingChannels:
       $ref: ./schemas/OpeningClosingChannels.yaml
+    PeakTPSMetrics:
+      $ref: ./schemas/PeakTPSMetrics.yaml
     PersonalAccount:
       $ref: ./schemas/PersonalAccount.yaml
     PersonalAccountBrand:
@@ -666,6 +1037,22 @@ components:
       $ref: ./schemas/PersonalUnarrangedAccountOverdraftCompany.yaml
     PersonalUnarrangedAccountOverdraftFee:
       $ref: ./schemas/PersonalUnarrangedAccountOverdraftFee.yaml
+    Phone:
+      $ref: ./schemas/Phone.yaml
+    PhoneChannel:
+      $ref: ./schemas/PhoneChannel.yaml
+    PhoneChannelIdentification:
+      $ref: ./schemas/PhoneChannelIdentification.yaml
+    PhoneChannelPhone:
+      $ref: ./schemas/PhoneChannelPhone.yaml
+    PhoneChannelService:
+      $ref: ./schemas/PhoneChannelService.yaml
+    PhoneChannelsBrand:
+      $ref: ./schemas/PhoneChannelsBrand.yaml
+    PhoneChannelsCompany:
+      $ref: ./schemas/PhoneChannelsCompany.yaml
+    PostalAddress:
+      $ref: ./schemas/PostalAddress.yaml
     Price:
       $ref: ./schemas/Price.yaml
     PriceIntervals:
@@ -674,8 +1061,14 @@ components:
       $ref: ./schemas/PriorityServiceName.yaml
     ReferentialRateIndexer:
       $ref: ./schemas/ReferentialRateIndexer.yaml
+    RejectionMetrics:
+      $ref: ./schemas/RejectionMetrics.yaml
     RequiredWarranty:
       $ref: ./schemas/RequiredWarranty.yaml
+    ResponseBankingAgentsList:
+      $ref: ./schemas/ResponseBankingAgentsList.yaml
+    ResponseBranchesList:
+      $ref: ./schemas/ResponseBranchesList.yaml
     ResponseBusinessAccounts:
       $ref: ./schemas/ResponseBusinessAccounts.yaml
     ResponseBusinessFinancings:
@@ -686,6 +1079,14 @@ components:
       $ref: ./schemas/ResponseBusinessLoans.yaml
     ResponseBusinessUnarrangedAccountOverdraft:
       $ref: ./schemas/ResponseBusinessUnarrangedAccountOverdraft.yaml
+    ResponseDiscoveryOutageList:
+      $ref: ./schemas/ResponseDiscoveryOutageList.yaml
+    ResponseDiscoveryStatusList:
+      $ref: ./schemas/ResponseDiscoveryStatusList.yaml
+    ResponseElectronicChannelsList:
+      $ref: ./schemas/ResponseElectronicChannelsList.yaml
+    ResponseMetricsList:
+      $ref: ./schemas/ResponseMetricsList.yaml
     ResponsePersonalAccounts:
       $ref: ./schemas/ResponsePersonalAccounts.yaml
     ResponsePersonalFinancings:
@@ -696,10 +1097,32 @@ components:
       $ref: ./schemas/ResponsePersonalLoans.yaml
     ResponsePersonalUnarrangedAccountOverdraft:
       $ref: ./schemas/ResponsePersonalUnarrangedAccountOverdraft.yaml
+    ResponsePhoneChannelsList:
+      $ref: ./schemas/ResponsePhoneChannelsList.yaml
+    ResponseSharedAutomatedTellerMachinesList:
+      $ref: ./schemas/ResponseSharedAutomatedTellerMachinesList.yaml
     ServiceBundle:
       $ref: ./schemas/ServiceBundle.yaml
     ServiceBundleServiceDetail:
       $ref: ./schemas/ServiceBundleServiceDetail.yaml
+    SharedAutomatedTellerMachines:
+      $ref: ./schemas/SharedAutomatedTellerMachines.yaml
+    SharedAutomatedTellerMachinesAvailability:
+      $ref: ./schemas/SharedAutomatedTellerMachinesAvailability.yaml
+    SharedAutomatedTellerMachinesBrand:
+      $ref: ./schemas/SharedAutomatedTellerMachinesBrand.yaml
+    SharedAutomatedTellerMachinesCompanies:
+      $ref: ./schemas/SharedAutomatedTellerMachinesCompanies.yaml
+    SharedAutomatedTellerMachinesCompany:
+      $ref: ./schemas/SharedAutomatedTellerMachinesCompany.yaml
+    SharedAutomatedTellerMachinesIdentification:
+      $ref: ./schemas/SharedAutomatedTellerMachinesIdentification.yaml
+    SharedAutomatedTellerMachinesPostalAddress:
+      $ref: ./schemas/SharedAutomatedTellerMachinesPostalAddress.yaml
+    SharedAutomatedTellerMachinesServices:
+      $ref: ./schemas/SharedAutomatedTellerMachinesServices.yaml
+    Status:
+      $ref: ./schemas/Status.yaml
     TransactionMethods:
       $ref: ./schemas/TransactionMethods.yaml
     UnarrangedAccountOverdraftRate:
@@ -707,6 +1130,13 @@ components:
     UnarrangedAccountOverdraftService:
       $ref: ./schemas/UnarrangedAccountOverdraftService.yaml
   securitySchemes:
-    $ref: "./schemas/securitySchemes.yaml"
+    APIKey1:
+      name: API Key
+      type: apiKey
+      in: query
+    APIKey2:
+      name: API Key
+      type: apiKey
+      in: query
   parameters:
-    $ref: "./schemas/parameters.yaml"
+      $ref: "./schemas/parameters.yaml"
