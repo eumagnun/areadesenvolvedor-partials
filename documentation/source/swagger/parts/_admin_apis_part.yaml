@@ -1,0 +1,81 @@
+﻿openapi: 3.0.0
+info:
+  title: APIs Admin do Open Banking Brasil
+  description: As API's administrativas são recursos que podem ser consumidos apenas pelo diretório para avaliação e controle da qualidade dos serviços fornecidos pelas instituições financeiras
+  version: 1.0.0-rc5
+  contact:
+    email: "apiteam@swagger.io"
+servers:
+  - url: 'http://api.banco.com.br/open-banking/admin/v1'
+tags:
+  - name: "Metrics"
+paths:
+  /metrics:
+    get:
+      tags:
+        - Metrics
+      summary: Métricas
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar estatísticas operacionais das APIs disponibilizadas pelas instituições financeiras, a fim de avaliar a qualidade dos serviços fornecidos ao usuário final.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getMetrics"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+        - in: query
+          name: period
+          schema:
+            type: string
+            enum:
+              - CURRENT
+              - ALL
+          required: false
+          description: |
+            Período a ser consultado
+              * `CURRENT` - Métricas do dia atual.
+              * `ALL` - Métricas de todo o período disponível.
+      responses:
+        '200':
+          description: Dados das métricas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMetricsList'
+components:
+  schemas:
+    AvailabilityMetrics:
+      $ref: ./schemas/AvailabilityMetrics.yaml
+    AverageMetrics:
+      $ref: ./schemas/AverageMetrics.yaml
+    AverageTPSMetrics:
+      $ref: ./schemas/AverageTPSMetrics.yaml
+    EndpointDowntime:
+      $ref: ./schemas/EndpointDowntime.yaml
+    EndpointUptime:
+      $ref: ./schemas/EndpointUptime.yaml
+    ErrorMetrics:
+      $ref: ./schemas/ErrorMetrics.yaml
+    InvocationMetrics:
+      $ref: ./schemas/InvocationMetrics.yaml
+    Links:
+      $ref: ./schemas/Links.yaml
+    Meta:
+      $ref: ./schemas/Meta.yaml
+    PeakTPSMetrics:
+      $ref: ./schemas/PeakTPSMetrics.yaml
+    RejectionMetrics:
+      $ref: ./schemas/RejectionMetrics.yaml
+    ResponseMetricsList:
+      $ref: ./schemas/ResponseMetricsList.yaml
+  parameters:
+    $ref: "./schemas/parameters.yaml"

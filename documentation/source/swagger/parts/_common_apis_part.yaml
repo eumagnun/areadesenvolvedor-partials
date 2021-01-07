@@ -1,0 +1,82 @@
+﻿openapi: 3.0.0
+info:
+  title: APIs OpenData do Open Banking Brasil
+  description: As APIs descritas neste documento são referentes as APIs da fase OpenData do Open Banking Brasil.
+  version: 1.0.0-rc5
+  contact:
+    email: "apiteam@swagger.io"
+servers:
+  - url: 'http://api.banco.com.br/open-banking/discovery/v1'
+tags:
+  - name: "Discovery"
+paths:
+  /status:
+    get:
+      tags:
+        - Discovery
+      summary: API de Status
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar estatísticas operacionais das APIs disponibilizadas pelas instituições financeiras, a fim de avaliar a qualidade dos serviços fornecidos ao usuário final.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getStatus"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: código de status retornado pelas APIs
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/ResponseDiscoveryStatusList.yaml"
+  /outages:
+    get:
+      tags:
+        - Discovery
+      summary: API de Outages
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtêm a lista de indisponibilidade agendada para os serviços.
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getOutage"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: código de status retornado pelas APIs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDiscoveryOutageList'
+components:
+  schemas:
+    Links:
+      $ref: ./schemas/Links.yaml
+    Meta:
+      $ref: ./schemas/Meta.yaml
+    ResponseDiscoveryOutageList:
+      $ref: ./schemas/ResponseDiscoveryOutageList.yaml
+    ResponseDiscoveryStatusList:
+      $ref: ./schemas/ResponseDiscoveryStatusList.yaml
+    Status:
+      $ref: ./schemas/Status.yaml
+  parameters:
+    $ref: "./schemas/parameters.yaml"

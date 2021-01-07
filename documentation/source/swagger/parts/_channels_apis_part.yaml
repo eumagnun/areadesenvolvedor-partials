@@ -1,0 +1,309 @@
+﻿openapi: 3.0.0
+info:
+  title: APIs OpenData do Open Banking Brasil
+  description: As APIs descritas neste documento são referentes as APIs da fase OpenData do Open Banking Brasil.
+  version: 1.0.0-rc5
+  contact:
+    email: "apiteam@swagger.io"
+tags:
+  - name: "Channels"
+    description: "Operações para listagem de canais de atendimentos"
+servers:
+  - url: http://api.banco.com.br/open-banking/channels/v1
+paths:
+  /banking-agents:
+    get:
+      tags:
+        - "Channels"
+      summary: Correspondentes bancários
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de Correspondentes bancários.
+
+        ### Visão de alto nível das estruturas de dados
+        <img src="images/tld/TLD_Banking_Agents_v1.png">
+
+        ### Dicionário de dados
+
+        <a href='dictionary/banking_agents.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getBankingAgents"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de correspondentes bancários obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBankingAgentsList'
+  /branches:
+    get:
+      tags:
+        - "Channels"
+      summary: Dependências próprias
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de dependências próprias da instituição financeira.
+
+        Dependência própria é o espaço físico destinado ao atendimento ao público.
+
+        Tags: [Agência (Branch)](#glossarioAgencia), [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Dependência (Branch)](#glossarioDependencia), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Posto de Atendimento Bancário - PAB (Branch)](#glossarioPostoAtendimentoBancario), [Posto de Atendimento Eletrônico – PAE (Branch)](#glossarioPostoAtendimentoEletronico) e [Unidade Administrativa Desmembrada – UAD (Branch)](#glossarioUnidadeAdministrativaDesmembrada).
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Branches_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/branches.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getBranches"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de dependências próprias obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBranchesList'
+  /electronic-channels:
+    get:
+      tags:
+        - "Channels"
+      summary: Canais de atendimento eletrônico
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de canais eletrônicos próprios da instituição financeira.
+
+        Esse *endpoint* retorna os possíveis canais de atendimento eletrônico, bem como suas informações, serviços prestados e formas de acesso.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
+
+        ### Visão de alto nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_ElectronicChannels_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/electronic_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getElectronicChannels"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de canais eletrônicos de atendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseElectronicChannelsList'
+  /phone-channels:
+    get:
+      tags:
+        - "Channels"
+      summary: Canais de atendimento telefônico
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+
+        ### Visão Geral
+
+        Obtém a lista de canais telefônicos próprios da instituição financeira.
+
+        Esse *endpoint* retorna os possíveis canais de atendimento telefônico bem como suas informações, serviços prestados e formas de acesso.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
+
+        ### Visão de alto nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_PhoneChannels_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/phone_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getPhoneChannels"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de canais telefônicos de atendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePhoneChannelsList'
+  /shared-automated-teller-machines:
+    get:
+      tags:
+        - "Channels"
+      summary: Terminais de Autoatendimento Compartilhado
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém a lista de terminais compartilhados de autoatendimento da instituição financeira.
+
+        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Terminais de Autoatendimento Compartilhados (Shared Automatic Teller Machine)](#glossarioTerminaisAutoAtendimentoCompartilhados).
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Shared_Automated_Teller_Machines_v1.png'/>
+
+        ### Dicionário de dados
+
+        <a href='dictionary/automated_teller_machines.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: "getSharedAutomatedTellerMachines"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Lista de terminais compartilhados de autoatendimento obtida com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSharedAutomatedTellerMachinesList'
+components:
+  schemas:
+    BankingAgent:
+      $ref: ./schemas/BankingAgent.yaml
+    BankingAgentAvailability:
+      $ref: ./schemas/BankingAgentAvailability.yaml
+    BankingAgentIdentification:
+      $ref: ./schemas/BankingAgentIdentification.yaml
+    BankingAgentLocation:
+      $ref: ./schemas/BankingAgentLocation.yaml
+    BankingAgentPostalAddress:
+      $ref: ./schemas/BankingAgentPostalAddress.yaml
+    BankingAgentService:
+      $ref: ./schemas/BankingAgentService.yaml
+    BankingAgentsBrand:
+      $ref: ./schemas/BankingAgentsBrand.yaml
+    BankingAgentsCompanies:
+      $ref: ./schemas/BankingAgentsCompanies.yaml
+    BankingAgentsContractor:
+      $ref: ./schemas/BankingAgentsContractor.yaml
+    Branch:
+      $ref: ./schemas/Branch.yaml
+    BranchAvailability:
+      $ref: ./schemas/BranchAvailability.yaml
+    BranchIdentification:
+      $ref: ./schemas/BranchIdentification.yaml
+    BranchPhone:
+      $ref: ./schemas/BranchPhone.yaml
+    BranchPostalAddress:
+      $ref: ./schemas/BranchPostalAddress.yaml
+    BranchService:
+      $ref: ./schemas/BranchService.yaml
+    BranchesBrand:
+      $ref: ./schemas/BranchesBrand.yaml
+    BranchesCompany:
+      $ref: ./schemas/BranchesCompany.yaml
+    Brand:
+      $ref: ./schemas/Brand.yaml
+    CNPJ:
+      $ref: ./schemas/CNPJ.yaml
+    ElectronicChannel:
+      $ref: ./schemas/ElectronicChannel.yaml
+    ElectronicChannelIdentification:
+      $ref: ./schemas/ElectronicChannelIdentification.yaml
+    ElectronicChannelService:
+      $ref: ./schemas/ElectronicChannelService.yaml
+    ElectronicChannelUrl:
+      $ref: ./schemas/ElectronicChannelUrl.yaml
+    ElectronicChannelsBrand:
+      $ref: ./schemas/ElectronicChannelsBrand.yaml
+    ElectronicChannelsCompanies:
+      $ref: ./schemas/ElectronicChannelsCompanies.yaml
+    GeographicCoordinates:
+      $ref: ./schemas/GeographicCoordinates.yaml
+    Links:
+      $ref: ./schemas/Links.yaml
+    Meta:
+      $ref: ./schemas/Meta.yaml
+    Phone:
+      $ref: ./schemas/Phone.yaml
+    PhoneChannel:
+      $ref: ./schemas/PhoneChannel.yaml
+    PhoneChannelIdentification:
+      $ref: ./schemas/PhoneChannelIdentification.yaml
+    PhoneChannelPhone:
+      $ref: ./schemas/PhoneChannelPhone.yaml
+    PhoneChannelService:
+      $ref: ./schemas/PhoneChannelService.yaml
+    PhoneChannelsBrand:
+      $ref: ./schemas/PhoneChannelsBrand.yaml
+    PhoneChannelsCompany:
+      $ref: ./schemas/PhoneChannelsCompany.yaml
+    PostalAddress:
+      $ref: ./schemas/PostalAddress.yaml
+    ResponseBankingAgentsList:
+      $ref: ./schemas/ResponseBankingAgentsList.yaml
+    ResponseBranchesList:
+      $ref: ./schemas/ResponseBranchesList.yaml
+    ResponseElectronicChannelsList:
+      $ref: ./schemas/ResponseElectronicChannelsList.yaml
+    ResponsePhoneChannelsList:
+      $ref: ./schemas/ResponsePhoneChannelsList.yaml
+    ResponseSharedAutomatedTellerMachinesList:
+      $ref: ./schemas/ResponseSharedAutomatedTellerMachinesList.yaml
+    SharedAutomatedTellerMachines:
+      $ref: ./schemas/SharedAutomatedTellerMachines.yaml
+    SharedAutomatedTellerMachinesAvailability:
+      $ref: ./schemas/SharedAutomatedTellerMachinesAvailability.yaml
+    SharedAutomatedTellerMachinesBrand:
+      $ref: ./schemas/SharedAutomatedTellerMachinesBrand.yaml
+    SharedAutomatedTellerMachinesCompanies:
+      $ref: ./schemas/SharedAutomatedTellerMachinesCompanies.yaml
+    SharedAutomatedTellerMachinesCompany:
+      $ref: ./schemas/SharedAutomatedTellerMachinesCompany.yaml
+    SharedAutomatedTellerMachinesIdentification:
+      $ref: ./schemas/SharedAutomatedTellerMachinesIdentification.yaml
+    SharedAutomatedTellerMachinesPostalAddress:
+      $ref: ./schemas/SharedAutomatedTellerMachinesPostalAddress.yaml
+    SharedAutomatedTellerMachinesServices:
+      $ref: ./schemas/SharedAutomatedTellerMachinesServices.yaml
+  parameters:
+    $ref: "./schemas/parameters.yaml"
