@@ -40,6 +40,11 @@ jobs:
     - run: npm install -g widdershins
     - run: widdershins source/swagger/swagger_open_banking_apis.yaml -o source/includes/partials_open_banking/_open_banking_apis.md.erb --user_templates source/templates/openapi3/ --language_tabs "javascript:JavaScript" --omitHeader --summary
 
+    # Run Spectral
+    - uses: stoplightio/spectral-action@v0.7.0
+      with:
+        file_glob: 'documentation/source/swagger/*.yaml'
+
     - run: bundle config set deployment 'true'
     - run: bundle install
 
