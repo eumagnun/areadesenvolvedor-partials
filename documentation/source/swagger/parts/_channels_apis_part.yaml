@@ -16,25 +16,7 @@ paths:
       tags:
         - "Channels"
       summary: Correspondentes bancários
-      description: |
-        |Versão|
-        |:-----|
-        |1     |
-
-        ### Visão Geral
-
-        Obtém a lista de Correspondentes bancários.
-
-        ### Visão de alto nível das estruturas de dados
-        <img src="images/tld/TLD_Banking_Agents_v1.png">
-
-        ### Dicionário de dados
-
-        <a href='dictionary/banking_agents.csv' target="_blank">Fazer download do dicionário de dados</a>
-
-        ### Especificação em OAS 3.0
-
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      description: Obtém a lista de correspondentes bancários da instituição financeira
       operationId: "getBankingAgents"
       parameters:
         - $ref: "#/components/parameters/page"
@@ -51,30 +33,7 @@ paths:
       tags:
         - "Channels"
       summary: Dependências próprias
-      description: |
-        |Versão|
-        |:-----|
-        |1     |
-
-        ### Visão Geral
-
-        Obtém a lista de dependências próprias da instituição financeira.
-
-        Dependência própria é o espaço físico destinado ao atendimento ao público.
-
-        Tags: [Agência (Branch)](#glossarioAgencia), [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Dependência (Branch)](#glossarioDependencia), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Posto de Atendimento Bancário - PAB (Branch)](#glossarioPostoAtendimentoBancario), [Posto de Atendimento Eletrônico – PAE (Branch)](#glossarioPostoAtendimentoEletronico) e [Unidade Administrativa Desmembrada – UAD (Branch)](#glossarioUnidadeAdministrativaDesmembrada).
-
-        ### Visão de alto de nível das estruturas de dados
-
-        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Branches_v1.png'/>
-
-        ### Dicionário de dados
-
-        <a href='dictionary/branches.csv' target="_blank">Fazer download do dicionário de dados</a>
-
-        ### Especificação em OAS 3.0
-
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      description: Obtém a lista de dependências próprias da instituição financeira
       operationId: "getBranches"
       parameters:
         - $ref: "#/components/parameters/page"
@@ -91,30 +50,7 @@ paths:
       tags:
         - "Channels"
       summary: Canais de atendimento eletrônico
-      description: |
-        |Versão|
-        |:-----|
-        |1     |
-
-        ### Visão Geral
-
-        Obtém a lista de canais eletrônicos próprios da instituição financeira.
-
-        Esse *endpoint* retorna os possíveis canais de atendimento eletrônico, bem como suas informações, serviços prestados e formas de acesso.
-
-        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
-
-        ### Visão de alto nível das estruturas de dados
-
-        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_ElectronicChannels_v1.png'/>
-
-        ### Dicionário de dados
-
-        <a href='dictionary/electronic_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
-
-        ### Especificação em OAS 3.0
-
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      description: Obtém a lista de canais eletrônicos de atendimento da instituição financeira
       operationId: "getElectronicChannels"
       parameters:
         - $ref: "#/components/parameters/page"
@@ -131,31 +67,7 @@ paths:
       tags:
         - "Channels"
       summary: Canais de atendimento telefônico
-      description: |
-        |Versão|
-        |:-----|
-        |1     |
-
-
-        ### Visão Geral
-
-        Obtém a lista de canais telefônicos próprios da instituição financeira.
-
-        Esse *endpoint* retorna os possíveis canais de atendimento telefônico bem como suas informações, serviços prestados e formas de acesso.
-
-        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca) e [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira).
-
-        ### Visão de alto nível das estruturas de dados
-
-        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_PhoneChannels_v1.png'/>
-
-        ### Dicionário de dados
-
-        <a href='dictionary/phone_channels.csv' target="_blank">Fazer download do dicionário de dados</a>
-
-        ### Especificação em OAS 3.0
-
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      description: Obtém a lista de canais telefônicos de atendimento da instituição financeira
       operationId: "getPhoneChannels"
       parameters:
         - $ref: "#/components/parameters/page"
@@ -172,28 +84,7 @@ paths:
       tags:
         - "Channels"
       summary: Terminais de Autoatendimento Compartilhado
-      description: |
-        |Versão|
-        |:-----|
-        |1     |
-
-        ### Visão Geral
-
-        Obtém a lista de terminais compartilhados de autoatendimento da instituição financeira.
-
-        Tags: [CNPJ (CNPJ Number)](#glossarioCNPJ), [Marca (Brand)](#glossarioMarca), [Instituição Financeira (Company)](#glossarioInstituicaoFinanceira), [Terminais de Autoatendimento Compartilhados (Shared Automatic Teller Machine)](#glossarioTerminaisAutoAtendimentoCompartilhados).
-
-        ### Visão de alto de nível das estruturas de dados
-
-        <img class='lazy' src='images/loading.gif' data-src='images/tld/TLD_Shared_Automated_Teller_Machines_v1.png'/>
-
-        ### Dicionário de dados
-
-        <a href='dictionary/automated_teller_machines.csv' target="_blank">Fazer download do dicionário de dados</a>
-
-        ### Especificação em OAS 3.0
-
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+      description: Obtém a lista de terminais compartilhados de autoatendimento
       operationId: "getSharedAutomatedTellerMachines"
       parameters:
         - $ref: "#/components/parameters/page"

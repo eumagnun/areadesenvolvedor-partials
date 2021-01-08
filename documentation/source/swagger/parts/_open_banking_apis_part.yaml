@@ -29,7 +29,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_common_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getStatus"
       parameters:
@@ -58,7 +58,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_common_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getOutage"
       parameters:
@@ -94,7 +94,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_channels_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getBankingAgents"
       parameters:
@@ -135,7 +135,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_channels_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getBranches"
       parameters:
@@ -176,7 +176,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_channels_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getElectronicChannels"
       parameters:
@@ -218,7 +218,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_channels_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getPhoneChannels"
       parameters:
@@ -257,7 +257,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_channels_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getSharedAutomatedTellerMachines"
       parameters:
@@ -298,7 +298,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalAccounts
       parameters:
@@ -339,7 +339,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getBusinessAccounts
       parameters:
@@ -382,7 +382,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalLoans
       parameters:
@@ -423,7 +423,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getBusinessLoans
       parameters:
@@ -462,7 +462,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalCreditCards
       parameters:
@@ -501,7 +501,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getBusinessCreditCards
       parameters:
@@ -542,7 +542,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalFinancings
       parameters:
@@ -583,7 +583,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getBusinessFinancings
       parameters:
@@ -624,7 +624,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalInvoiceFinancings
       parameters:
@@ -665,7 +665,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getBusinessInvoiceFinancings
       parameters:
@@ -707,7 +707,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: getPersonalUnarrangedAccountOverdraft
       parameters:
@@ -750,7 +750,8 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_products_services_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+
       operationId: getBusinessUnarrangedAccountOverdraft
       parameters:
         - $ref: "#/components/parameters/page"
@@ -778,7 +779,7 @@ paths:
 
         ### Especificação em OAS 3.0
 
-        <a href='swagger/swagger_open_banking.yaml'>Download da Especificação (OAS 3.0)</a>
+        <a href='swagger/swagger_admin_apis.yaml'>Download da Especificação (OAS 3.0)</a>
 
       operationId: "getMetrics"
       parameters:
