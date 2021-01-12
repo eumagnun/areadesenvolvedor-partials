@@ -1,5 +1,5 @@
 {{= data.tags.section }}
-<h3 id="{{=data.operationUniqueSlug}}-parameters">Parameters</h3>
+<h3 id="{{=data.operationUniqueSlug}}-parameters">Parâmetros</h3>
 
 |Nome|In|Tipo|Obrigatório|Descrição|
 |---|---|---|---|---|
