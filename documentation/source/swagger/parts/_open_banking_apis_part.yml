@@ -833,7 +833,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseAccountsIdentification.yaml'
+                $ref: '#/components/schemas/ResponseAccountsIdentification'
 components:
   schemas:
     AccountFee:
