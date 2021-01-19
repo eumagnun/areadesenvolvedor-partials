@@ -10,7 +10,7 @@ properties:
       - brand
     properties:
       brand:
-        $ref: './accountsIdentificationBrand.yaml'
+        $ref: './AccountsIdentificationBrand.yaml'
   links:
     $ref: './Links.yaml'
   meta:
