@@ -1,0 +1,45 @@
+﻿Xpath;Nome ;Definição;Tipo do Dado;Tamanho;Mandatoriedade;Formato;Domínio;Mínimo de Ocorrências;Máximo de Ocorrências;Restrições;
+openBankingBrazil/<brand>/;;Objeto que define a Organização controladora do grupo de instituições financeiras;Objeto;;Obrigatório;;;1;1;NA;
+openBankingBrazil/<brand>/name;name;Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a 'marca' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes;Texto;80;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/;;Companies traz uma lista de todas as instituições da Marca;Lista;;Obrigatório;;;1;N;NA;
+openBankingBrazil/<brand>/companies/name;name;Nome da Instituição pertencente a Marca responsável pelo Cadastro. p. ex. 'Empresa da Organização A';Texto;80;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/cnpjNumber;cnpjNumber;"Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica. 
+Deve-se ter apenas os números do CNPJ, sem máscara";Texto;14;Obrigatório;\d{14}|^NA$;;1;1;NA;
+openBankingBrazil/<brand>/accounts/;;Objeto agrupador informações de Contas;Objeto;;Obrigatório;;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/requestDateTime;requestDateTime;"Data e hora da consulta, conforme especificação RFC-3339, formato UTC. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/updateDateTime;updateDateTime;"Data e hora da atualização, conforme especificação RFC-3339. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/ ; ;Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas;Objeto;;Obrigatório;;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/;;Lista das transações a débito e a crédito efetivadas em conta;Lista;;Obrigatório;;;1;N;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
+DEBITO";1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
+DOC
+PIX
+TRANSFERENCIA_MESMA_INSTITUICAO
+PAGAMENTO_BOLETO
+PAGAMENTO_CONVENIOS
+ARRECADACAO
+OUTRO";1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/;;Lista das Informações relativas aos pagamentos autorizados;Lista;;;;;0;N;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
+DEBITO";1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
+DOC
+PIX
+TRANSFERENCIA_MESMA_INSTITUICAO
+PAGAMENTO_BOLETO
+PAGAMENTO_CONVENIOS
+ARRECADACAO
+OUTRO";1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;^((\d{1,9}\.\d{2}){1}|NA)$  ;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
