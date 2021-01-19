@@ -848,8 +848,6 @@ components:
       $ref: ./schemas/AccountSubType.yaml      
     AccountType:
       $ref: ./schemas/AccountType.yaml
-    Accounts:
-      $ref: ./schemas/ResponseAccountsIdentification.yaml 
     AccountsIdentification:
       $ref: ./schemas/AccountsIdentification.yaml       
     AccountsIdentificationBrand:
@@ -1106,6 +1104,8 @@ components:
       $ref: ./schemas/RejectionMetrics.yaml
     RequiredWarranty:
       $ref: ./schemas/RequiredWarranty.yaml
+    ResponseAccountsIdentification:
+      $ref: ./schemas/ResponseAccountsIdentification.yaml       
     ResponseBankingAgentsList:
       $ref: ./schemas/ResponseBankingAgentsList.yaml
     ResponseBranchesList:
