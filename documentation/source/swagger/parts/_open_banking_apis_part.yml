@@ -11,6 +11,7 @@ tags:
   - name: APIs Comuns
   - name: API - Canais de Atendimento
   - name: API - Produtos e Serviços
+  - name: API - Contas  
   - name: API - Admin
 paths:
   /discovery/v1/status:
@@ -804,6 +805,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseMetricsList'
+  /accounts/v1/accounts-identification:
+    get:
+      tags:
+        - Accounts Identification
+      summary: Atributos que identificam uma conta
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar dados que identificam uma conta
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getAccountsIdentification"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados de identificação de conta obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountsIdentification'
 components:
   schemas:
     AccountFee:
@@ -814,8 +844,18 @@ components:
       $ref: ./schemas/AccountPriorityService.yaml
     AccountPriorityServiceCode:
       $ref: ./schemas/AccountPriorityServiceCode.yaml
+    AccountSubType:
+      $ref: ./schemas/AccountSubType.yaml      
     AccountType:
       $ref: ./schemas/AccountType.yaml
+    Accounts:
+      $ref: ./schemas/ResponseAccountsIdentification.yaml 
+    AccountsIdentification:
+      $ref: ./schemas/AccountsIdentification.yaml       
+    AccountsIdentificationBrand:
+      $ref: ./schemas/AccountsIdentificationBrand.yaml
+    AccountsIdentificationCompany:
+      $ref: ./schemas/AccountsIdentificationCompany.yaml            
     AccountsIncomeRate:
       $ref: ./schemas/AccountsIncomeRate.yaml
     AccountsTermsConditions:
