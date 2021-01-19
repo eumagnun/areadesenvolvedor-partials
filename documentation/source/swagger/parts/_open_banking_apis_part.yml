@@ -808,7 +808,7 @@ paths:
   /accounts/v1/accounts-identification:
     get:
       tags:
-        - Accounts Identification
+        - API - Accounts Identification
       summary: Atributos que identificam uma conta
       description: |
         |Versão|
