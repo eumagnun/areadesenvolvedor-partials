@@ -1,0 +1,14 @@
+type: object
+required:
+  - requestDateTime
+  - updateDateTime  
+  - type
+  - amount
+  - currency 
+allOf:
+  - $ref: './RequestUpdateDateTime.yaml'   
+properties:
+  type:
+    $ref: "./OverdraftLimitType.yaml"
+  currency:
+    $ref:  "./Currency.yaml"

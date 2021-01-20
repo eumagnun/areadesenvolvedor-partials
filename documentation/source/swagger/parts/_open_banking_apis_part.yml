@@ -837,7 +837,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseAccountsIdentification'
+                $ref: '#/components/schemas/ResponseAccountIdentification'
 
   /accounts/v1/accounts-balances:
     get:
@@ -872,12 +872,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAccountBalances'
+
+  /accounts/v1/accounts-overdraftlimits:
+    get:
+      tags:
+        - API - Contas
+      summary: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente 
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente 
+        
+        ### Dicionário de dados
+
+        <a href='dictionary/accounts_overdraft_limits.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getAccountsOverdraftLimits"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente .
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountOverdraftLimits'                
 components:
   schemas:
     AccountFee:
       $ref: ./schemas/AccountFee.yaml
     AccountOtherService:
       $ref: ./schemas/AccountOtherService.yaml
+    AccountOverdraftLimits:
+      $ref: ./schemas/AccountOverdraftLimits.yaml      
     AccountPriorityService:
       $ref: ./schemas/AccountPriorityService.yaml
     AccountPriorityServiceCode:
@@ -1068,6 +1104,8 @@ components:
       $ref: ./schemas/MonthlyPrice.yaml
     OpeningClosingChannels:
       $ref: ./schemas/OpeningClosingChannels.yaml
+    OverdraftLimitType:
+      $ref: ./schemas/OverdraftLimitType.yaml      
     PeakTPSMetrics:
       $ref: ./schemas/PeakTPSMetrics.yaml
     PersonalAccount:
@@ -1142,12 +1180,16 @@ components:
       $ref: ./schemas/ReferentialRateIndexer.yaml
     RejectionMetrics:
       $ref: ./schemas/RejectionMetrics.yaml
+    RequestUpdateDateTime:
+      $ref: ./schemas/RequestUpdateDateTime.yaml      
     RequiredWarranty:
       $ref: ./schemas/RequiredWarranty.yaml
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml       
     ResponseAccountBalances:
-      $ref: ./schemas/ResponseAccountBalances.yaml             
+      $ref: ./schemas/ResponseAccountBalances.yaml
+    ResponseAccountOverdraftLimits:
+      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml                      
     ResponseBankingAgentsList:
       $ref: ./schemas/ResponseBankingAgentsList.yaml
     ResponseBranchesList:

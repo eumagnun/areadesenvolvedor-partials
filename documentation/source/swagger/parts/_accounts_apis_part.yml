@@ -47,13 +47,33 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseAccountsBalances'  
+                $ref: '#/components/schemas/ResponseAccountBalances'  
+
+  /accounts-overdraftlimits:
+    get:
+      tags:
+        - Accounts Overdraft LImits
+      summary: Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 
+      description:  Obtém dados relativos Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 
+      operationId: getAccountsOverdraftLimits
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados relativos aos saldos em conta obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountOverdraftLimits'                  
 components:
   schemas:
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml
-    ResponseAccountsBalances:
+    ResponseAccountBalances:
       $ref: ./schemas/ResponseAccountBalances.yaml      
+    ResponseAccountOverdraftLimits:
+      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml         
   securitySchemes:
     $ref: "./schemas/securitySchemes.yaml"
   parameters:
