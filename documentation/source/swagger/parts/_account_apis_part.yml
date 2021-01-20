@@ -29,12 +29,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseAccountsIdentification'
+                $ref: '#/components/schemas/ResponseAccountIdentification'
   
 components:
   schemas:
     ResponseAccountsIdentification:
-      $ref: ./schemas/ResponseAccountsIdentification.yaml
+      $ref: ./schemas/ResponseAccountIdentification.yaml
   securitySchemes:
     $ref: "./schemas/securitySchemes.yaml"
   parameters:

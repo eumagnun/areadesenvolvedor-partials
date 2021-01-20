@@ -1108,8 +1108,8 @@ components:
       $ref: ./schemas/RejectionMetrics.yaml
     RequiredWarranty:
       $ref: ./schemas/RequiredWarranty.yaml
-    ResponseAccountsIdentification:
-      $ref: ./schemas/ResponseAccountsIdentification.yaml       
+    ResponseAccountIdentification:
+      $ref: ./schemas/ResponseAccountIdentification.yaml       
     ResponseBankingAgentsList:
       $ref: ./schemas/ResponseBankingAgentsList.yaml
     ResponseBranchesList:

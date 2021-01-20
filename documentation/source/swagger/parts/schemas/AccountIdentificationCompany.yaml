@@ -11,7 +11,7 @@ properties:
     description: Nome da Instituição, pertencente à marca, responsável pela modalidade de Empréstimos. p.ex.'Empresa da Organização A'
     example: Empresa A1
   accounts:
-    $ref: './AccountsIdentification.yaml'
+    $ref: './AccountIdentification.yaml'
     description: Objeto agrupador informações de Contas
 allOf:
   - $ref: './CNPJ.yaml'
