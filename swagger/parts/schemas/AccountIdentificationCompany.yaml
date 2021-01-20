@@ -4,7 +4,7 @@ required:
   - cnpjNumber
   - account
 allOf:
-  - $ref: './Company.yaml'  
+  - $ref: './CompanySimple.yaml'  
 properties:
   account:
     $ref: './AccountIdentification.yaml'

@@ -853,7 +853,7 @@ paths:
     get:
       tags:
         - API - Contas
-      summary: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente
+      summary: Limites referentes ao valor das operações de crédito
       description: |
         |Versão|
         |:-----|
@@ -876,7 +876,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
-          description: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente .
+          description: Dados relativos a Limites referentes ao valor das operações de crédito obtidos com sucesso.
           content:
             application/json:
               schema:
@@ -1132,7 +1132,7 @@ components:
         - cnpjNumber
         - account
       allOf:
-        - $ref: '#/components/schemas/Company'
+        - $ref: '#/components/schemas/CompanySimple'
       properties:
         account:
           $ref: '#/components/schemas/AccountsIdentification'
@@ -2418,6 +2418,20 @@ components:
             URL do link que conterá a lista complementar com os nomes e CNPJs agrupados sob o mesmo cnpjNumber. Os contidos nessa lista possuem as mesmas características para produtos e serviços. Endereço eletrônico de acesso ao canal. Será obrigatoriamente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada.
             Restrição: Será obrigatorimente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada
           example: 'https://empresadaorganizacaoa.com/complementarylist'
+    CompanySimple:
+      type: object
+      required:
+        - name
+        - cnpjNumber
+      allOf:
+        - $ref: '#/components/schemas/Company/allOf/0'
+      properties:
+        name:
+          type: string
+          description: 'Nome da Instituição, pertencente à marca, responsável pela modalidade de Empréstimos. p.ex.''Empresa da Organização A'''
+          maxLength: 80
+          pattern: \w*\W*
+          example: Empresa A1
     CreditCardIdentification:
       type: object
       required:
@@ -4382,7 +4396,7 @@ components:
                       - cnpjNumber
                       - balances
                     allOf:
-                      - $ref: '#/components/schemas/Company'
+                      - $ref: '#/components/schemas/CompanySimple'
                     properties:
                       balances:
                         type: array
