@@ -809,7 +809,7 @@ paths:
     get:
       tags:
         - API - Contas
-      summary: Identificação de Contas
+      summary: Dados de Identificação de Contas
       description: |
         |Versão|
         |:-----|

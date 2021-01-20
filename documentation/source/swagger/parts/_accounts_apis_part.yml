@@ -17,7 +17,7 @@ paths:
     get:
       tags:
         - Accounts Identification
-      summary: Atributos que identificam uma conta
+      summary: Dados de identificação de uma conta
       description:  Obtém dados que identificam uma conta
       operationId: getAccountsIdentification
       parameters:
