@@ -877,7 +877,7 @@ paths:
     get:
       tags:
         - API - Contas
-      summary: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente 
+      summary: Limites referentes ao valor das operações de crédito 
       description: |
         |Versão|
         |:-----|
@@ -901,7 +901,7 @@ paths:
         - $ref: "#/components/parameters/pageSize"
       responses:
         '200':
-          description: Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente .
+          description: Dados relativos a Limites referentes ao valor das operações de crédito obtidos com sucesso.
           content:
             application/json:
               schema:
@@ -1032,6 +1032,8 @@ components:
       $ref: ./schemas/Links.yaml
     Company:
       $ref: ./schemas/Company.yaml
+    CompanySimple:
+      $ref: ./schemas/CompanySimple.yaml      
     CreditCardIdentification:
       $ref: ./schemas/CreditCardIdentification.yaml
     CreditCardInterest:

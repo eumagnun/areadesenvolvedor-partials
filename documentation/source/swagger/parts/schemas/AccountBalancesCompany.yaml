@@ -4,7 +4,7 @@ required:
   - cnpjNumber
   - balances
 allOf:
-  - $ref: './Company.yaml'  
+  - $ref: './CompanySimple.yaml'  
 properties:
  balances:
     type: array

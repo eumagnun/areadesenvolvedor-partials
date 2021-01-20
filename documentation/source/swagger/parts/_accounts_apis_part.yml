@@ -53,7 +53,7 @@ paths:
     get:
       tags:
         - Accounts Overdraft LImits
-      summary: Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 
+      summary: Limites referentes ao valor das operações de crédito
       description:  Obtém dados relativos Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 
       operationId: getAccountsOverdraftLimits
       parameters:
@@ -61,7 +61,7 @@ paths:
         - $ref: "#/components/parameters/pageSize"
       responses:
         '200':
-          description: Dados relativos aos saldos em conta obtidos com sucesso.
+          description: Dados de Limites referentes ao valor das operações de crédito com sucesso.
           content:
             application/json:
               schema:

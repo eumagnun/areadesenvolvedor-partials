@@ -4,7 +4,7 @@ required:
   - cnpjNumber
   - overdraftLimits
 allOf:
-  - $ref: './Company.yaml'  
+  - $ref: './CompanySimple.yaml'  
 properties:
   overdraftLimits:
     type: array
