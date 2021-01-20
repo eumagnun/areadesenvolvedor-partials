@@ -8,12 +8,12 @@ Deve-se ter apenas os números do CNPJ, sem máscara";Texto;14;Obrigatório;\d{1
 openBankingBrazil/<brand>/accounts/;;Objeto agrupador informações de Contas;Objeto;;Obrigatório;;;1;1;NA;
 openBankingBrazil/<brand>/companies/accounts/requestDateTime;requestDateTime;"Data e hora da consulta, conforme especificação RFC-3339, formato UTC. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
 openBankingBrazil/<brand>/companies/accounts/updateDateTime;updateDateTime;"Data e hora da atualização, conforme especificação RFC-3339. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsOverdraftLimits/;;Lista com dos Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente ;Lista;;Condicional;;;;;Esta lista está relacionada, exclusivamente, à conta do tipo depósito à vista;
-openBankingBrazil/<brand>/companies/accounts/accountsOverdraftLimits/type;type;"Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)
+openBankingBrazil/<brand>/companies/accounts/overdraftLimits/;;Lista com dos Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente ;Lista;;Condicional;;;;;Esta lista está relacionada, exclusivamente, à conta do tipo depósito à vista;
+openBankingBrazil/<brand>/companies/accounts/overdraftLimits/type;type;"Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)
 - valor utilizado do limite do cheque especial
 - valor disponível do limite do cheque especial
 - saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante";ENUM;;Obrigatório;;"VALOR_UTILIZADO
 VALOR_DISPONIVEL
 SALDO_DESCOBERTO";;;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsOverdraftLimits/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo;Float;12;Opcional;;;;;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsOverdraftLimits/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);;;NA;
+openBankingBrazil/<brand>/companies/accounts/overdraftLimits/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo;Float;12;Opcional;;;;;NA;
+openBankingBrazil/<brand>/companies/accounts/overdraftLimits/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);;;NA;

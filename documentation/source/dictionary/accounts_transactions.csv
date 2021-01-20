@@ -8,11 +8,11 @@ Deve-se ter apenas os números do CNPJ, sem máscara";Texto;14;Obrigatório;\d{1
 openBankingBrazil/<brand>/accounts/;;Objeto agrupador informações de Contas;Objeto;;Obrigatório;;;1;1;NA;
 openBankingBrazil/<brand>/companies/accounts/requestDateTime;requestDateTime;"Data e hora da consulta, conforme especificação RFC-3339, formato UTC. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
 openBankingBrazil/<brand>/companies/accounts/updateDateTime;updateDateTime;"Data e hora da atualização, conforme especificação RFC-3339. p.ex. ""2020-07-21T08:30:00Z""";Texto;20;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/ ; ;Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas;Objeto;;Obrigatório;;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/;;Lista das transações a débito e a crédito efetivadas em conta;Lista;;Obrigatório;;;1;N;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
+openBankingBrazil/<brand>/companies/accounts/transactions/ ; ;Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas;Objeto;;Obrigatório;;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/;;Lista das transações a débito e a crédito efetivadas em conta;Lista;;Obrigatório;;;1;N;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
 DEBITO";1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
 DOC
 PIX
 TRANSFERENCIA_MESMA_INSTITUICAO
@@ -20,16 +20,16 @@ PAGAMENTO_BOLETO
 PAGAMENTO_CONVENIOS
 ARRECADACAO
 OUTRO";1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;;;0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/effectives/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/;;Lista das Informações relativas aos pagamentos autorizados;Lista;;;;;0;N;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transactions/effectives/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/;;Lista das Informações relativas aos pagamentos autorizados;Lista;;;;;0;N;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/creditDebitIndicator;creditDebitIndicator;Indicador do tipo de lançamento: a crédito ou a débito. Vide enum;ENUM;;Obrigatório;;"CREDITO
 DEBITO";1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/type;type;Tipo de Transação;ENUM;;Obrigatório;;"TED
 DOC
 PIX
 TRANSFERENCIA_MESMA_INSTITUICAO
@@ -37,9 +37,9 @@ PAGAMENTO_BOLETO
 PAGAMENTO_CONVENIOS
 ARRECADACAO
 OUTRO";1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;^((\d{1,9}\.\d{2}){1}|NA)$  ;;0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
-openBankingBrazil/<brand>/companies/accounts/accountsTransactions/authorisedPayments/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/additionalInfo;additionalInfo;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO ;Texto;30;Condicional;\w*\W*;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/amount;amount;Valor da transação. Expressa em valor monetário com 2 casas decimais;Float;12;Opcional;^((\d{1,9}\.\d{2}){1}|NA)$  ;;0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/currency;currency;Moeda referente ao valor da transação, segundo modelo ISO-4217. p.ex. 'BRL' ;Texto;3;Condicional;;moeda (ISO-4217);0;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/transactionDate;transactionDate;Data de lançamento da transação;Texto;10;Obrigatório;^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/payer;payer;Identificação do Pagador da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
+openBankingBrazil/<brand>/companies/accounts/transaction/authorisedPayments/payee;payee;Identificação do Recebedor da transação;Texto;100;Obrigatório;\w*\W*;;1;1;NA;
