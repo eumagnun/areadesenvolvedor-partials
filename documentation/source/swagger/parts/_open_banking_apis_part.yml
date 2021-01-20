@@ -887,11 +887,11 @@ components:
     AccountType:
       $ref: ./schemas/AccountType.yaml
     AccountsIdentification:
-      $ref: ./schemas/AccountsIdentification.yaml       
+      $ref: ./schemas/AccountIdentification.yaml       
     AccountsIdentificationBrand:
-      $ref: ./schemas/AccountsIdentificationBrand.yaml
+      $ref: ./schemas/AccountIdentificationBrand.yaml
     AccountsIdentificationCompany:
-      $ref: ./schemas/AccountsIdentificationCompany.yaml            
+      $ref: ./schemas/AccountIdentificationCompany.yaml            
     AccountsIncomeRate:
       $ref: ./schemas/AccountsIncomeRate.yaml
     AccountsTermsConditions:
