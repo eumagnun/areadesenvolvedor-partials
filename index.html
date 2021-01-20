@@ -383,18 +383,18 @@
               </ul>
           </li>
           <li>
-            <a href="#apis-do-open-banking-brasil-api-admin" class="toc-h1 toc-link" data-title="API - Admin">API - Admin</a>
+            <a href="#apis-do-open-banking-brasil-api-contas" class="toc-h1 toc-link" data-title="API - Contas">API - Contas</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#authentication-metricas" class="toc-h2 toc-link" data-title="Métricas">Métricas</a>
+                    <a href="#authentication-identificacao-de-contas" class="toc-h2 toc-link" data-title="Identificação de Contas">Identificação de Contas</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#apis-do-open-banking-brasil-api-accounts" class="toc-h1 toc-link" data-title="API - Accounts">API - Accounts</a>
+            <a href="#apis-do-open-banking-brasil-api-admin" class="toc-h1 toc-link" data-title="API - Admin">API - Admin</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#authentication-accounts-identification" class="toc-h2 toc-link" data-title="Accounts Identification">Accounts Identification</a>
+                    <a href="#authentication-metricas" class="toc-h2 toc-link" data-title="Métricas">Métricas</a>
                   </li>
               </ul>
           </li>
@@ -5721,6 +5721,146 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
+<h1 id="apis-do-open-banking-brasil-api-contas">API - Contas</h1>
+
+<h2 id='authentication-identificacao-de-contas'>Identificação de Contas</h2>
+
+<p><a id="opIdgetAccountsIdentification"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://api.banco.com.br/open-banking/accounts/v1/accounts-identification</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+
+<p><code>GET /accounts/v1/accounts-identification</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1</td>
+</tr>
+</tbody></table>
+
+<h3 id='authentication-identificacao-de-contas-visao-geral'>Visão Geral</h3>
+
+<p>Este <em>endpoint</em> possibilita ao diretório consultar dados que identificam uma conta</p>
+
+<h3 id='authentication-identificacao-de-contas-especificacao-em-oas-3-0'>Especificação em OAS 3.0</h3>
+
+<p><a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a></p>
+
+<h3 id="identificação-de-contas-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>In</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Número da página que está sendo requisitada (o valor da primeira página é 1).</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Quantidade total de registros por páginas.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Exemplo de código</p>
+
+<p>200 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="identificação-de-contas-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Dados de identificação de conta obtidos com sucesso.</td>
+<td><a href="#schemaresponseaccountsidentification">ResponseAccountsIdentification</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="apis-do-open-banking-brasil-api-admin">API - Admin</h1>
 
 <h2 id='authentication-metricas'>Métricas</h2>
@@ -5967,146 +6107,6 @@ This operation does not require authentication
 This operation does not require authentication
 </aside>
 
-<h1 id="apis-do-open-banking-brasil-api-accounts">API - Accounts</h1>
-
-<h2 id='authentication-accounts-identification'>Accounts Identification</h2>
-
-<p><a id="opIdgetAccountsIdentification"></a></p>
-
-<blockquote>
-<p>Exemplo de código</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://api.banco.com.br/open-banking/accounts/v1/accounts-identification</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div>
-
-<p><code>GET /accounts/v1/accounts-identification</code></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Versão</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">1</td>
-</tr>
-</tbody></table>
-
-<h3 id='authentication-accounts-identification-visao-geral'>Visão Geral</h3>
-
-<p>Este <em>endpoint</em> possibilita ao diretório consultar dados que identificam uma conta</p>
-
-<h3 id='authentication-accounts-identification-especificacao-em-oas-3-0'>Especificação em OAS 3.0</h3>
-
-<p><a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a></p>
-
-<h3 id="accounts-identification-parameters">Parâmetros</h3>
-
-<table><thead>
-<tr>
-<th>Nome</th>
-<th>In</th>
-<th>Tipo</th>
-<th>Obrigatório</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>query</td>
-<td>integer</td>
-<td>false</td>
-<td>Número da página que está sendo requisitada (o valor da primeira página é 1).</td>
-</tr>
-<tr>
-<td>page-size</td>
-<td>query</td>
-<td>integer</td>
-<td>false</td>
-<td>Quantidade total de registros por páginas.</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Exemplo de código</p>
-
-<p>200 Response</p>
-</blockquote>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-
-<h3 id="accounts-identification-responses">Resposta</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Significado</th>
-<th>Descrição</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Dados de identificação de conta obtidos com sucesso.</td>
-<td><a href="#schemaresponseaccountsidentification">ResponseAccountsIdentification</a></td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-This operation does not require authentication
-</aside>
-
 <h1 id='schemas'>Schemas</h1>
 
 <h2 id="tocS_AccountFee">AccountFee</h2>
@@ -6221,7 +6221,7 @@ This operation does not require authentication
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -6303,7 +6303,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6411,7 +6411,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6477,7 +6477,7 @@ This operation does not require authentication
 
 <p>Lista das Siglas de identificação do Serviço Prioritário, segundo Resolução 3.919 do Bacen.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -6497,7 +6497,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -6676,7 +6676,7 @@ This operation does not require authentication
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"INDIVIDUAL"</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6694,7 +6694,7 @@ This operation does not require authentication
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -6730,7 +6730,7 @@ Conta de depósito à vista ou Conta corrente - é o tipo mais comum. Nela, o di
 Conta poupança - foi criada para estimular as pessoas a pouparem. O dinheiro que ficar na conta por trinta dias passa a gerar rendimentos, com isenção de imposto de renda para quem declara. Ou seja, o dinheiro “cresce” (rende) enquanto ficar guardado na conta. Cada depósito terá rendimentos de mês em mês, sempre no dia do mês em que o dinheiro tiver sido depositado
 Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#39;destinada à execução de transações de pagamento em moeda eletrônica realizadas com base em fundos denominados em reais previamente aportados&#39;</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -6750,7 +6750,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -6790,7 +6790,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6884,7 +6884,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6931,7 +6931,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6968,7 +6968,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"prepaidPaymentAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40% Rendimento a.m."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7094,7 +7094,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7146,7 +7146,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Faixas para cobrança da taxa efetiva aplicada pela contratação do crédito, no intervalo informado: 1ª faixa, 2ª faixa, 3ª faixa e 4ª faixa. Segundo Normativa nº32 de 2020: &#39;Distribuição de frequência relativa dos valores de tarifas e taxas de juros cobrados dos clientes, de que trata o § 2º do art. 3º da Circular nº 4.015, de 2020, deve dar-se com base em quatro faixas de igual tamanho, com explicitação dos valores sobre a mediana e o percentual de clientes em cada uma dessas faixas.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -7166,7 +7166,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -7209,7 +7209,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7266,7 +7266,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7360,7 +7360,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7469,7 +7469,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7555,7 +7555,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7606,7 +7606,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"isPublicAccessAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7659,7 +7659,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -7709,7 +7709,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7785,7 +7785,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7840,7 +7840,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_BankingAgentService">BankingAgentService</h2>
@@ -7855,7 +7855,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7887,7 +7887,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para detalhamento</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8031,7 +8031,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8129,7 +8129,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8221,7 +8221,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8310,7 +8310,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Dependência de instituições financeiras e demais instituições, autorizadas a funcionar pelo Banco Central do Brasil, destinada à prática das atividades para as quais a instituição esteja regularmente habilitada.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -8377,7 +8377,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"isPublicAccessAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8430,7 +8430,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Indica se a instalação da Dependência tem acesso restrito a clientes.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8483,7 +8483,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"openingDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8543,7 +8543,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Data de abertura da dependência (uma string com data conforme especificação RFC-3339. p.ex. 2014-03-19)</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8581,7 +8581,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35721199"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_BranchPostalAddress">BranchPostalAddress</h2>
@@ -8606,7 +8606,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_BranchService">BranchService</h2>
@@ -8621,7 +8621,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8653,7 +8653,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Texto livre para complementar informação relativa ao Serviço disponível, quando for selecionada a opção &#39;OUTROS_PRODUTOS_SERVICOS&#39;</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -8893,7 +8893,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8985,7 +8985,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9035,7 +9035,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9189,7 +9189,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9403,7 +9403,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9571,7 +9571,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9644,7 +9644,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9887,7 +9887,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10123,7 +10123,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10338,7 +10338,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10452,7 +10452,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10554,7 +10554,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -10690,7 +10690,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10827,7 +10827,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10880,7 +10880,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas à Modalidade de Financiamentos para pessoa jurídica informada. Pode ser informada a URL referente ao endereço onde constam as condições informadas. Endereço eletrônico de acesso ao canal.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10983,7 +10983,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_BusinessInvoiceFinancings">BusinessInvoiceFinancings</h2>
@@ -11097,7 +11097,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_invoice_financings"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11143,7 +11143,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas à Modalidade de Financiamentos para pessoa jurídica informada. Pode ser informada a URL referente ao endereço onde constam as condições informadas. Endereço eletrônico de acesso ao canal.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11287,7 +11287,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11431,7 +11431,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11512,7 +11512,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -11584,7 +11584,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11728,7 +11728,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_loans"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11774,7 +11774,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas à Modalidade de Empréstimo para pessoa jurídica informada. Pode ser informada a URL referente ao endereço onde constam as condições informadas. Endereço eletrônico de acesso ao canal.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11922,7 +11922,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12066,7 +12066,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12206,7 +12206,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/business_unarranged_account_overdraft"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12350,7 +12350,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12490,7 +12490,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12571,7 +12571,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -12606,7 +12606,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12665,7 +12665,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12708,7 +12708,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12761,7 +12761,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Texto livre para especificar categoria de bandeira marcada como &#39;OUTRAS&#39;. Campo deve ser obrigatoriamente preenchido se campo network vier selecionado como &#39;OUTROS&#39;</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13009,7 +13009,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Informações sobre taxas de juros</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -13055,7 +13055,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NA"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13080,7 +13080,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo Texto para descrever outras operações de crédito marcadas como &#39;OUTROS&#39;. Se o campo &#39;code&#39; vier selecionado com &#39;OUTROS&#39; é obrigatório o preenchimento do additionalInfo</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13114,7 +13114,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"closingProcessInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/creditcards_closing_process"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13208,7 +13208,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13261,7 +13261,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13355,7 +13355,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"closingProcessInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/creditcards_closing_process"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_Currency">Currency</h2>
@@ -13370,7 +13370,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -13401,7 +13401,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1500"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13443,7 +13443,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13483,7 +13483,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13515,7 +13515,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Lista das URLs que atendem um tipo de canal eletrônico selecionado</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13560,7 +13560,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SIC"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13592,7 +13592,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Texto livre para complementar informação relativa ao Serviço disponível, quando for selecionada a opção &#39;OUTROS_PRODUTOS_SERVICOS&#39;</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13769,7 +13769,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="tocselectronicchannelurl"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"string"</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13823,7 +13823,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13879,7 +13879,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13927,7 +13927,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Tempos de downtime por endpoint.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -13970,7 +13970,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Tempos de uptime por endpoint.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -14011,7 +14011,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14052,7 +14052,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Tarifas cobradas sobre Serviços ofertados</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -14131,7 +14131,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14218,7 +14218,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14287,7 +14287,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto agrupador das informações que compõem as Coordenadas geográficas: latitude e longitude</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -14325,7 +14325,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.8700"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14399,7 +14399,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14471,7 +14471,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14496,7 +14496,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Percentual que incide sobre a composição das taxas de juros remuneratórios. (representa uma porcentagem Ex: 0.15 (O valor ao lado representa 15%. O valor &#39;1 &#39;representa 100%) A apuração pode acontecer com até 4 casas decimais. O preenchimento deve respeitar as 4 casas decimais, mesmo que venham preenchidas com zeros (representação de porcentagem p.ex: 0.1500. Este valor representa 15%. O valor 1 representa 100%)</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -14614,7 +14614,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14764,7 +14764,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14832,7 +14832,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_LoanFees">LoanFees</h2>
@@ -14897,7 +14897,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -14969,7 +14969,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15056,7 +15056,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15121,7 +15121,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15158,7 +15158,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15195,7 +15195,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15232,7 +15232,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15273,7 +15273,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15325,7 +15325,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Canais disponíveis para abertura e encerramento de contas, p.ex. &#39;DEPENDENCIAS_PROPRIAS&#39;</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -15345,7 +15345,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -15397,7 +15397,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15607,7 +15607,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15876,7 +15876,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16093,7 +16093,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16301,7 +16301,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16523,7 +16523,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16738,7 +16738,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16918,7 +16918,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_PersonalFinancing">PersonalFinancing</h2>
@@ -17032,7 +17032,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_financing"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17078,7 +17078,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas ao produto ou serviço informado. Pode ser informada a URL referente ao endereço onde constam as condições informadas.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17238,7 +17238,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17375,7 +17375,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17452,7 +17452,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17582,7 +17582,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_invoice_financings"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17628,7 +17628,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas à Modalidade de Financiamentos para pessoa natural informada. Pode ser informada a URL referente ao endereço onde constam as condições informadas. Endereço eletrônico de acesso ao canal.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -17772,7 +17772,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17916,7 +17916,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17997,7 +17997,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -18069,7 +18069,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18213,7 +18213,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_loans"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18259,7 +18259,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Campo aberto para informar as condições contratuais relativas à Modalidade de Financiamentos para pessoa jurídica informada. Pode ser informada a URL referente ao endereço onde constam as condições informadas. Endereço eletrônico de acesso ao canal.</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -18407,7 +18407,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18551,7 +18551,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18691,7 +18691,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"termsConditions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresaa1.com/personal_unarranged_account_overdraft"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18835,7 +18835,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18975,7 +18975,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19056,7 +19056,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Objeto que reúne informações de tarifas de serviços</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -19090,7 +19090,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35721199"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19129,7 +19129,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Número de telefone da dependência - se houver</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -19174,7 +19174,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19219,7 +19219,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19251,7 +19251,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Lista de telefones do Canal de Atendimento</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -19289,7 +19289,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mensagem complementar necessária para o agrupamento da identificação do telefone."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19341,7 +19341,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19373,7 +19373,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Texto livre para complementar informação relativa ao Serviço disponível, quando for selecionada a opção &#39;OUTROS_PRODUTOS_SERVICOS&#39;</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -19582,7 +19582,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19643,7 +19643,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19698,7 +19698,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19779,7 +19779,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Objeto agrupador das informações que compõem as Coordenadas geográficas: latitude e longitude</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -19911,7 +19911,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19963,7 +19963,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Segundo Normativa nº 32, BCB, de 2020: Distribuição de frequência relativa dos valores de tarifas cobradas dos clientes, de que trata o § 2º do art. 3º da Circular nº 4.015, de 2020, deve dar-se com base em quatro faixas de igual tamanho, com explicitação dos valores sobre a mediana em cada uma dessas faixas. Informando: 1ª faixa, 2ª faixa, 3ª faixa e 4ª faixa</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -19983,7 +19983,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -20022,7 +20022,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Nome dos Serviços prioritários, segundo Resolução 3.919 do Bacen, para pessoa natural.</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -20042,7 +20042,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -20225,7 +20225,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Tipos de taxas referenciais ou indexadores, conforme Anexo 5: Taxa referencial ou Indexador (Indx), do Documento 3040</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -20245,7 +20245,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -20345,7 +20345,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20397,7 +20397,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 * <code>acordos de compensação</code>: operações que sejam abrangidas por acordos para a compensação e liquidação de obrigações no âmbito do SFN, nos termos da Resolução 3.263, de 24 de fevereiro de 2005
 * <code>não aplicável</code></p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -20417,7 +20417,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -20525,7 +20525,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20797,7 +20797,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20953,7 +20953,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21083,7 +21083,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21190,7 +21190,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21297,7 +21297,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21404,7 +21404,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21507,7 +21507,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21575,7 +21575,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21670,7 +21670,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21765,7 +21765,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21921,7 +21921,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22110,7 +22110,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <p><em>None</em></p>
 
 <h2 id="tocS_ResponsePersonalFinancings">ResponsePersonalFinancings</h2>
@@ -22180,7 +22180,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22287,7 +22287,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22394,7 +22394,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22497,7 +22497,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22706,7 +22706,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22818,7 +22818,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22918,7 +22918,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22978,7 +22978,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"freeEventQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23063,7 +23063,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23121,7 +23121,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"isPublicAccessAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23174,7 +23174,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -23268,7 +23268,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23339,7 +23339,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23370,7 +23370,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23413,7 +23413,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva Santos"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23454,7 +23454,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23535,7 +23535,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Objeto agrupador das informações que compõem as Coordenadas geográficas: latitude e longitude</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -23664,7 +23664,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serviços complementares de atendimento via terminais de autoatendimento."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23696,7 +23696,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Texto livre para complementar informação relativa ao Serviço disponível, quando for preenchida a opção &#39;OUTROS_PRODUTOS_SERVICOS&#39;</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -23898,7 +23898,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23951,7 +23951,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>Endpoints com indisponibilidade</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -23988,7 +23988,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 
 <p>Lista de formas de movimentação possíveis para a conta</p>
 
-<h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<h3 id='schemas-metricas-properties'>Properties</h3>
 
 <table><thead>
 <tr>
@@ -24008,7 +24008,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 
 <table><thead>
 <tr>
@@ -24086,7 +24086,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">&quot;maximumRate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.8565&quot;</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<p></span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24174,7 +24174,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w"></p>
 
-<p></span></code></pre></div><h3 id='schemas-accounts-identification-properties'>Properties</h3>
+<p></span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24227,7 +24227,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='schemas-accounts-identification-properties-enumerated-values'>Enumerated Values</h4>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
