@@ -388,6 +388,12 @@
                   <li>
                     <a href="#authentication-dados-de-identificacao-de-contas" class="toc-h2 toc-link" data-title="Dados de Identificação de Contas">Dados de Identificação de Contas</a>
                   </li>
+                  <li>
+                    <a href="#authentication-dados-relativos-aos-saldos-em-conta" class="toc-h2 toc-link" data-title="Dados relativos aos saldos em conta">Dados relativos aos saldos em conta</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-dados-relativos-a-limites-referentes-ao-valor-das-operacoes-de-credito-vinculadas-a-conta-de-deposito-a-vista-ou-conta-corrente" class="toc-h2 toc-link" data-title="Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente">Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -406,6 +412,9 @@
                   </li>
                   <li>
                     <a href="#tocS_AccountOtherService" class="toc-h2 toc-link" data-title="AccountOtherService">AccountOtherService</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_AccountOverdraftLimits" class="toc-h2 toc-link" data-title="AccountOverdraftLimits">AccountOverdraftLimits</a>
                   </li>
                   <li>
                     <a href="#tocS_AccountPriorityService" class="toc-h2 toc-link" data-title="AccountPriorityService">AccountPriorityService</a>
@@ -448,6 +457,9 @@
                   </li>
                   <li>
                     <a href="#tocS_AverageTPSMetrics" class="toc-h2 toc-link" data-title="AverageTPSMetrics">AverageTPSMetrics</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_BalanceType" class="toc-h2 toc-link" data-title="BalanceType">BalanceType</a>
                   </li>
                   <li>
                     <a href="#tocS_BankingAgent" class="toc-h2 toc-link" data-title="BankingAgent">BankingAgent</a>
@@ -690,6 +702,9 @@
                     <a href="#tocS_OpeningClosingChannels" class="toc-h2 toc-link" data-title="OpeningClosingChannels">OpeningClosingChannels</a>
                   </li>
                   <li>
+                    <a href="#tocS_OverdraftLimitType" class="toc-h2 toc-link" data-title="OverdraftLimitType">OverdraftLimitType</a>
+                  </li>
+                  <li>
                     <a href="#tocS_PeakTPSMetrics" class="toc-h2 toc-link" data-title="PeakTPSMetrics">PeakTPSMetrics</a>
                   </li>
                   <li>
@@ -801,10 +816,19 @@
                     <a href="#tocS_RejectionMetrics" class="toc-h2 toc-link" data-title="RejectionMetrics">RejectionMetrics</a>
                   </li>
                   <li>
+                    <a href="#tocS_RequestUpdateDateTime" class="toc-h2 toc-link" data-title="RequestUpdateDateTime">RequestUpdateDateTime</a>
+                  </li>
+                  <li>
                     <a href="#tocS_RequiredWarranty" class="toc-h2 toc-link" data-title="RequiredWarranty">RequiredWarranty</a>
                   </li>
                   <li>
-                    <a href="#tocS_ResponseAccountsIdentification" class="toc-h2 toc-link" data-title="ResponseAccountsIdentification">ResponseAccountsIdentification</a>
+                    <a href="#tocS_ResponseAccountIdentification" class="toc-h2 toc-link" data-title="ResponseAccountIdentification">ResponseAccountIdentification</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ResponseAccountBalances" class="toc-h2 toc-link" data-title="ResponseAccountBalances">ResponseAccountBalances</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ResponseAccountOverdraftLimits" class="toc-h2 toc-link" data-title="ResponseAccountOverdraftLimits">ResponseAccountOverdraftLimits</a>
                   </li>
                   <li>
                     <a href="#tocS_ResponseBankingAgentsList" class="toc-h2 toc-link" data-title="ResponseBankingAgentsList">ResponseBankingAgentsList</a>
@@ -5813,8 +5837,7 @@ This operation does not require authentication
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
@@ -5824,6 +5847,8 @@ This operation does not require authentication
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
           </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -5857,7 +5882,277 @@ This operation does not require authentication
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Dados de identificação de conta obtidos com sucesso.</td>
-<td><a href="#schemaresponseaccountsidentification">ResponseAccountsIdentification</a></td>
+<td><a href="#schemaresponseaccountidentification">ResponseAccountIdentification</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h2 id='authentication-dados-relativos-aos-saldos-em-conta'>Dados relativos aos saldos em conta</h2>
+
+<p><a id="opIdgetAccountsBalances"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://api.banco.com.br/open-banking/accounts/v1/accounts-balances</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+
+<p><code>GET /accounts/v1/accounts-balances</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1</td>
+</tr>
+</tbody></table>
+
+<h3 id='authentication-dados-relativos-aos-saldos-em-conta-visao-geral'>Visão Geral</h3>
+
+<p>Este <em>endpoint</em> possibilita ao diretório consultar dados relativos aos saldos em conta </p>
+
+<h3 id='authentication-dados-relativos-aos-saldos-em-conta-dicionario-de-dados'>Dicionário de dados</h3>
+
+<p><a href='dictionary/accounts_balances.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<h3 id='authentication-dados-relativos-aos-saldos-em-conta-especificacao-em-oas-3-0'>Especificação em OAS 3.0</h3>
+
+<p><a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a></p>
+
+<h3 id="dados-relativos-aos-saldos-em-conta-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>In</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Número da página que está sendo requisitada (o valor da primeira página é 1).</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Quantidade total de registros por páginas.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Exemplo de código</p>
+
+<p>200 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="dados-relativos-aos-saldos-em-conta-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Dados relativos aos saldos em conta obtidos com sucesso.</td>
+<td><a href="#schemaresponseaccountbalances">ResponseAccountBalances</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h2 id='authentication-dados-relativos-a-limites-referentes-ao-valor-das-operacoes-de-credito-vinculadas-a-conta-de-deposito-a-vista-ou-conta-corrente'>Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente</h2>
+
+<p><a id="opIdgetAccountsOverdraftLimits"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://api.banco.com.br/open-banking/accounts/v1/accounts-overdraftlimits</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+
+<p><code>GET /accounts/v1/accounts-overdraftlimits</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1</td>
+</tr>
+</tbody></table>
+
+<h3 id='authentication-dados-relativos-a-limites-referentes-ao-valor-das-operacoes-de-credito-vinculadas-a-conta-de-deposito-a-vista-ou-conta-corrente-visao-geral'>Visão Geral</h3>
+
+<p>Este <em>endpoint</em> possibilita ao diretório consultar limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente </p>
+
+<h3 id='authentication-dados-relativos-a-limites-referentes-ao-valor-das-operacoes-de-credito-vinculadas-a-conta-de-deposito-a-vista-ou-conta-corrente-dicionario-de-dados'>Dicionário de dados</h3>
+
+<p><a href='dictionary/accounts_overdraft_limits.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<h3 id='authentication-dados-relativos-a-limites-referentes-ao-valor-das-operacoes-de-credito-vinculadas-a-conta-de-deposito-a-vista-ou-conta-corrente-especificacao-em-oas-3-0'>Especificação em OAS 3.0</h3>
+
+<p><a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a></p>
+
+<h3 id="dados-relativos-a-limites-referentes-ao-valor-das-operações-de-crédito-vinculadas-à-conta-de-depósito-à-vista-ou-conta-corrente-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>In</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Número da página que está sendo requisitada (o valor da primeira página é 1).</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Quantidade total de registros por páginas.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Exemplo de código</p>
+
+<p>200 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="dados-relativos-a-limites-referentes-ao-valor-das-operações-de-crédito-vinculadas-à-conta-de-depósito-à-vista-ou-conta-corrente-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Dados relativos a limites referentes ao valor das operações de crédito vinculadas à conta de depósito à vista ou conta corrente .</td>
+<td><a href="#schemaresponseaccountoverdraftlimits">ResponseAccountOverdraftLimits</a></td>
 </tr>
 </tbody></table>
 
@@ -6358,6 +6653,45 @@ This operation does not require authentication
 <td>true</td>
 <td>none</td>
 <td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_AccountOverdraftLimits">AccountOverdraftLimits</h2>
+
+<p><a id="schemaaccountoverdraftlimits"></a>
+<a id="schema_AccountOverdraftLimits"></a>
+<a id="tocSaccountoverdraftlimits"></a>
+<a id="tocsaccountoverdraftlimits"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemaoverdraftlimittype">OverdraftLimitType</a></td>
+<td>true</td>
+<td>none</td>
+<td>Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)<br>valor utilizado do limite do cheque especial<br>valor disponível do limite do cheque especial<br>saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante</td>
+</tr>
+<tr>
+<td>currency</td>
+<td><a href="#schemacurrency">Currency</a></td>
+<td>true</td>
+<td>none</td>
+<td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
 </tbody></table>
 
@@ -6872,8 +7206,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
@@ -6883,6 +7216,8 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -6921,8 +7256,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="tocSaccountsidentificationcompany"></a>
 <a id="tocsaccountsidentificationcompany"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
@@ -6932,6 +7266,8 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -6946,14 +7282,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Nome da Instituição, pertencente à marca, responsável pela modalidade de Empréstimos. p.ex.&#39;Empresa da Organização A&#39;</td>
-</tr>
-<tr>
-<td>accounts</td>
+<td>account</td>
 <td><a href="#schemaaccountsidentification">AccountsIdentification</a></td>
 <td>true</td>
 <td>none</td>
@@ -7499,12 +7828,70 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
+<h2 id="tocS_BalanceType">BalanceType</h2>
+
+<p><a id="schemabalancetype"></a>
+<a id="schema_BalanceType"></a>
+<a id="tocSbalancetype"></a>
+<a id="tocsbalancetype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"SALDO_DISPONIVEL"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>tipos de saldo em conta: (vide enum) informados:
+Saldo disponível para utilização imediata. No caso de conta de depósito a vista, sem considerar cheque especial e investimentos atrelados a conta. Admite saldo negativo.
+Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial
+Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta </p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>tipos de saldo em conta: (vide enum) informados:<br>Saldo disponível para utilização imediata. No caso de conta de depósito a vista, sem considerar cheque especial e investimentos atrelados a conta. Admite saldo negativo.<br>Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial<br>Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta</td>
+</tr>
+</tbody></table>
+
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>SALDO_DISPONIVEL</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>SALDO_BLOQUEADO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>SALDO_DISPONIVEL_APLICACAO_AUTOMATICA</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_BankingAgent">BankingAgent</h2>
 
 <p><a id="schemabankingagent"></a>
 <a id="schema_BankingAgent"></a>
 <a id="tocSbankingagent"></a>
 <a id="tocsbankingagent"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"identification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"corporationName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -15387,6 +15774,64 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
+<h2 id="tocS_OverdraftLimitType">OverdraftLimitType</h2>
+
+<p><a id="schemaoverdraftlimittype"></a>
+<a id="schema_OverdraftLimitType"></a>
+<a id="tocSoverdraftlimittype"></a>
+<a id="tocsoverdraftlimittype"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"VALOR_UTILIZADO"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)
+valor utilizado do limite do cheque especial
+valor disponível do limite do cheque especial
+saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante </p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)<br>valor utilizado do limite do cheque especial<br>valor disponível do limite do cheque especial<br>saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante</td>
+</tr>
+</tbody></table>
+
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>VALOR_UTILIZADO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>VALOR_DISPONIVEL</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>SALDO_DESCOBERTO</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_PeakTPSMetrics">PeakTPSMetrics</h2>
 
 <p><a id="schemapeaktpsmetrics"></a>
@@ -20375,6 +20820,43 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
+<h2 id="tocS_RequestUpdateDateTime">RequestUpdateDateTime</h2>
+
+<p><a id="schemarequestupdatedatetime"></a>
+<a id="schema_RequestUpdateDateTime"></a>
+<a id="tocSrequestupdatedatetime"></a>
+<a id="tocsrequestupdatedatetime"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>requestDateTime</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
+</tr>
+<tr>
+<td>updateDateTime</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Data e hora da atualização, conforme especificação RFC-3339.</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_RequiredWarranty">RequiredWarranty</h2>
 
 <p><a id="schemarequiredwarranty"></a>
@@ -20487,12 +20969,12 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </tbody></table>
 
-<h2 id="tocS_ResponseAccountsIdentification">ResponseAccountsIdentification</h2>
+<h2 id="tocS_ResponseAccountIdentification">ResponseAccountIdentification</h2>
 
-<p><a id="schemaresponseaccountsidentification"></a>
-<a id="schema_ResponseAccountsIdentification"></a>
-<a id="tocSresponseaccountsidentification"></a>
-<a id="tocsresponseaccountsidentification"></a></p>
+<p><a id="schemaresponseaccountidentification"></a>
+<a id="schema_ResponseAccountIdentification"></a>
+<a id="tocSresponseaccountidentification"></a>
+<a id="tocsresponseaccountidentification"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -20500,8 +20982,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
@@ -20511,6 +20992,8 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
           </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -20549,6 +21032,203 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <tr>
 <td>» brand</td>
 <td><a href="#schemaaccountsidentificationbrand">AccountsIdentificationBrand</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacnpj">CNPJ</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ResponseAccountBalances">ResponseAccountBalances</h2>
+
+<p><a id="schemaresponseaccountbalances"></a>
+<a id="schema_ResponseAccountBalances"></a>
+<a id="tocSresponseaccountbalances"></a>
+<a id="tocsresponseaccountbalances"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"urlComplementaryList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://empresadaorganizacaoa.com/complementarylist"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» brand</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a &#39;marca&#39; é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.</td>
+</tr>
+<tr>
+<td>»» companies</td>
+<td>[allOf]</td>
+<td>true</td>
+<td>none</td>
+<td>Companies traz uma lista de todas as instuições da Marca.</td>
+</tr>
+<tr>
+<td>»»» balances</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>Relação de informações de um contratante do serviço de correspondente.</td>
+</tr>
+<tr>
+<td>»»»» requestDateTime</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
+</tr>
+<tr>
+<td>»»»» updateDateTime</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Data e hora da atualização, conforme especificação RFC-3339.</td>
+</tr>
+<tr>
+<td>»»»» type</td>
+<td><a href="#schemabalancetype">BalanceType</a></td>
+<td>true</td>
+<td>none</td>
+<td>tipos de saldo em conta: (vide enum) informados:<br>Saldo disponível para utilização imediata. No caso de conta de depósito a vista, sem considerar cheque especial e investimentos atrelados a conta. Admite saldo negativo.<br>Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial<br>Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta</td>
+</tr>
+<tr>
+<td>»»»» currency</td>
+<td><a href="#schemacurrency">Currency</a></td>
+<td>true</td>
+<td>none</td>
+<td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacnpj">CNPJ</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ResponseAccountOverdraftLimits">ResponseAccountOverdraftLimits</h2>
+
+<p><a id="schemaresponseaccountoverdraftlimits"></a>
+<a id="schema_ResponseAccountOverdraftLimits"></a>
+<a id="tocSresponseaccountoverdraftlimits"></a>
+<a id="tocsresponseaccountoverdraftlimits"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» brand</td>
+<td><a href="#schemaaccountoverdraftlimits">AccountOverdraftLimits</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>

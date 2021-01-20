@@ -1,0 +1,11 @@
+type: object
+required:
+  - name
+  - cnpjNumber
+  - account
+allOf:
+  - $ref: './Company.yaml'  
+properties:
+  account:
+    $ref: './AccountIdentification.yaml'
+    description: Objeto agrupador informações de Contas

@@ -1,0 +1,14 @@
+type: object
+required:
+  - name
+  - cnpjNumber
+  - overdraftLimits
+allOf:
+  - $ref: './Company.yaml'  
+properties:
+  overdraftLimits:
+    type: array
+    items:
+      $ref:  './AccountOverdraftLimits.yaml'
+    minItems: 1      
+    description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 
