@@ -808,8 +808,8 @@ paths:
   /accounts/v1/accounts-identification:
     get:
       tags:
-        - API - Accounts
-      summary: Accounts Identification
+        - API - Contas
+      summary: Identificação de Contas
       description: |
         |Versão|
         |:-----|
