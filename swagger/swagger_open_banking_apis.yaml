@@ -789,7 +789,7 @@ paths:
     get:
       tags:
         - API - Contas
-      summary: Identificação de Contas
+      summary: Dados de Identificação de Contas
       description: |
         |Versão|
         |:-----|
@@ -798,6 +798,10 @@ paths:
         ### Visão Geral
 
         Este *endpoint* possibilita ao diretório consultar dados que identificam uma conta
+
+        ### Dicionário de dados
+
+        <a href='dictionary/accounts_identification.csv' target="_blank">Fazer download do dicionário de dados</a>
 
         ### Especificação em OAS 3.0
 
