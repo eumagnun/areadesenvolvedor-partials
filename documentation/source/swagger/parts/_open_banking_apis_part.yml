@@ -838,6 +838,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAccountsIdentification'
+
+  /accounts/v1/accounts-balances:
+    get:
+      tags:
+        - API - Contas
+      summary: Dados relativos aos saldos em conta 
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar dados relativos aos saldos em conta 
+        
+        ### Dicionário de dados
+
+        <a href='dictionary/accounts_balances.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getAccountsBalances"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados relativos aos saldos em conta obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountBalances'
 components:
   schemas:
     AccountFee:
@@ -872,6 +906,8 @@ components:
       $ref: ./schemas/AverageMetrics.yaml
     AverageTPSMetrics:
       $ref: ./schemas/AverageTPSMetrics.yaml
+    BalanceType:
+      $ref: ./schemas/BalanceType.yaml      
     BankingAgent:
       $ref: ./schemas/BankingAgent.yaml
     BankingAgentAvailability:
@@ -1110,6 +1146,8 @@ components:
       $ref: ./schemas/RequiredWarranty.yaml
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml       
+    ResponseAccountBalances:
+      $ref: ./schemas/ResponseAccountBalances.yaml             
     ResponseBankingAgentsList:
       $ref: ./schemas/ResponseBankingAgentsList.yaml
     ResponseBranchesList:

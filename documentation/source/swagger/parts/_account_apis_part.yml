@@ -30,11 +30,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAccountIdentification'
-  
+
+  /accounts-balances:
+    get:
+      tags:
+        - Accounts Balances
+      summary: Dados relativos aos saldos em conta 
+      description:  Obtém dados relativos aos saldos em conta 
+      operationId: getAccountsBalances
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados relativos aos saldos em conta obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountsBalances'  
 components:
   schemas:
-    ResponseAccountsIdentification:
+    ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml
+    ResponseAccountsBalances:
+      $ref: ./schemas/ResponseAccountBalances.yaml      
   securitySchemes:
     $ref: "./schemas/securitySchemes.yaml"
   parameters:
