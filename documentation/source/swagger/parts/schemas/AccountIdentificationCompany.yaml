@@ -6,6 +6,6 @@ required:
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
-  accountIdentification:
+  accountsIdentification:
     $ref: './AccountIdentification.yaml'
     description: Objeto agrupador informações de Contas
