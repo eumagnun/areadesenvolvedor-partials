@@ -392,6 +392,9 @@
                     <a href="#authentication-dados-relativos-aos-saldos-em-conta" class="toc-h2 toc-link" data-title="Dados relativos aos saldos em conta">Dados relativos aos saldos em conta</a>
                   </li>
                   <li>
+                    <a href="#authentication-informacoes-relativas-as-transacoes-de-credito-e-debito-realizadas-e-autorizadas" class="toc-h2 toc-link" data-title="Informações relativas às Transações de crédito e débito realizadas e autorizadas">Informações relativas às Transações de crédito e débito realizadas e autorizadas</a>
+                  </li>
+                  <li>
                     <a href="#authentication-limites-referentes-ao-valor-das-operacoes-de-credito" class="toc-h2 toc-link" data-title="Limites referentes ao valor das operações de crédito">Limites referentes ao valor das operações de crédito</a>
                   </li>
               </ul>
@@ -825,13 +828,16 @@
                     <a href="#tocS_RequiredWarranty" class="toc-h2 toc-link" data-title="RequiredWarranty">RequiredWarranty</a>
                   </li>
                   <li>
-                    <a href="#tocS_ResponseAccountIdentification" class="toc-h2 toc-link" data-title="ResponseAccountIdentification">ResponseAccountIdentification</a>
-                  </li>
-                  <li>
                     <a href="#tocS_ResponseAccountBalances" class="toc-h2 toc-link" data-title="ResponseAccountBalances">ResponseAccountBalances</a>
                   </li>
                   <li>
+                    <a href="#tocS_ResponseAccountIdentification" class="toc-h2 toc-link" data-title="ResponseAccountIdentification">ResponseAccountIdentification</a>
+                  </li>
+                  <li>
                     <a href="#tocS_ResponseAccountOverdraftLimits" class="toc-h2 toc-link" data-title="ResponseAccountOverdraftLimits">ResponseAccountOverdraftLimits</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ResponseAccountTransactions" class="toc-h2 toc-link" data-title="ResponseAccountTransactions">ResponseAccountTransactions</a>
                   </li>
                   <li>
                     <a href="#tocS_ResponseBankingAgentsList" class="toc-h2 toc-link" data-title="ResponseBankingAgentsList">ResponseBankingAgentsList</a>
@@ -922,6 +928,9 @@
                   </li>
                   <li>
                     <a href="#tocS_TransactionMethods" class="toc-h2 toc-link" data-title="TransactionMethods">TransactionMethods</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_TransactionTypes" class="toc-h2 toc-link" data-title="TransactionTypes">TransactionTypes</a>
                   </li>
                   <li>
                     <a href="#tocS_UnarrangedAccountOverdraftRate" class="toc-h2 toc-link" data-title="UnarrangedAccountOverdraftRate">UnarrangedAccountOverdraftRate</a>
@@ -6025,6 +6034,168 @@ This operation does not require authentication
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Dados relativos aos saldos em conta obtidos com sucesso.</td>
 <td><a href="#schemaresponseaccountbalances">ResponseAccountBalances</a></td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h2 id='authentication-informacoes-relativas-as-transacoes-de-credito-e-debito-realizadas-e-autorizadas'>Informações relativas às Transações de crédito e débito realizadas e autorizadas</h2>
+
+<p><a id="opIdgetAccountsTransactions"></a></p>
+
+<blockquote>
+<p>Exemplo de código</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://api.banco.com.br/open-banking/accounts/v1/accounts-transactions</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div>
+
+<p><code>GET /accounts/v1/accounts-transactions</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1</td>
+</tr>
+</tbody></table>
+
+<h3 id='authentication-informacoes-relativas-as-transacoes-de-credito-e-debito-realizadas-e-autorizadas-visao-geral'>Visão Geral</h3>
+
+<p>Este <em>endpoint</em> possibilita ao diretório consultar informações relativas às Transações de crédito e débito realizadas e autorizadas</p>
+
+<h3 id='authentication-informacoes-relativas-as-transacoes-de-credito-e-debito-realizadas-e-autorizadas-dicionario-de-dados'>Dicionário de dados</h3>
+
+<p><a href='dictionary/accounts_transactions.csv' target="_blank">Fazer download do dicionário de dados</a></p>
+
+<h3 id='authentication-informacoes-relativas-as-transacoes-de-credito-e-debito-realizadas-e-autorizadas-especificacao-em-oas-3-0'>Especificação em OAS 3.0</h3>
+
+<p><a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a></p>
+
+<h3 id="informações-relativas-às-transações-de-crédito-e-débito-realizadas-e-autorizadas-parameters">Parâmetros</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>In</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Número da página que está sendo requisitada (o valor da primeira página é 1).</td>
+</tr>
+<tr>
+<td>page-size</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Quantidade total de registros por páginas.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Exemplo de código</p>
+
+<p>200 Response</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"transactionsEffectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"transactionsAuthorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+
+<h3 id="informações-relativas-às-transações-de-crédito-e-débito-realizadas-e-autorizadas-responses">Resposta</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Significado</th>
+<th>Descrição</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Dados relativos a Transações de crédito e débito realizadas e autorizadas.</td>
+<td><a href="#schemaresponseaccounttransactions">ResponseAccountTransactions</a></td>
 </tr>
 </tbody></table>
 
@@ -21129,94 +21300,13 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </tbody></table>
 
-<h2 id="tocS_ResponseAccountIdentification">ResponseAccountIdentification</h2>
-
-<p><a id="schemaresponseaccountidentification"></a>
-<a id="schema_ResponseAccountIdentification"></a>
-<a id="tocSresponseaccountidentification"></a>
-<a id="tocsresponseaccountidentification"></a></p>
-
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>object</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» brand</td>
-<td><a href="#schemaaccountsidentificationbrand">AccountsIdentificationBrand</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>links</td>
-<td><a href="#schemacnpj">CNPJ</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>meta</td>
-<td><a href="#schemameta">Meta</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_ResponseAccountBalances">ResponseAccountBalances</h2>
 
 <p><a id="schemaresponseaccountbalances"></a>
 <a id="schema_ResponseAccountBalances"></a>
 <a id="tocSresponseaccountbalances"></a>
 <a id="tocsresponseaccountbalances"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -21418,6 +21508,87 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </tbody></table>
 
+<h2 id="tocS_ResponseAccountIdentification">ResponseAccountIdentification</h2>
+
+<p><a id="schemaresponseaccountidentification"></a>
+<a id="schema_ResponseAccountIdentification"></a>
+<a id="tocSresponseaccountidentification"></a>
+<a id="tocsresponseaccountidentification"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» brand</td>
+<td><a href="#schemaaccountsidentificationbrand">AccountsIdentificationBrand</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>links</td>
+<td><a href="#schemacnpj">CNPJ</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_ResponseAccountOverdraftLimits">ResponseAccountOverdraftLimits</h2>
 
 <p><a id="schemaresponseaccountoverdraftlimits"></a>
@@ -21502,6 +21673,536 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>true</td>
 <td>none</td>
 <td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ResponseAccountTransactions">ResponseAccountTransactions</h2>
+
+<p><a id="schemaresponseaccounttransactions"></a>
+<a id="schema_ResponseAccountTransactions"></a>
+<a id="tocSresponseaccounttransactions"></a>
+<a id="tocsresponseaccounttransactions"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"transactionsEffectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"transactionsAuthorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.banco.com.br/open-banking/channels/v1/&lt;resource&gt;"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» brand</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a &#39;marca&#39; é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.</td>
+</tr>
+<tr>
+<td>»» companies</td>
+<td>[allOf]</td>
+<td>true</td>
+<td>none</td>
+<td>Companies traz uma lista de todas as instuições da Marca.</td>
+</tr>
+<tr>
+<td>»»» balances</td>
+<td>[allOf]</td>
+<td>false</td>
+<td>none</td>
+<td>Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas</td>
+</tr>
+<tr>
+<td>»»»» transactionsEffectives</td>
+<td>[allOf]</td>
+<td>false</td>
+<td>none</td>
+<td>Lista das transações a débito e a crédito efetivadas em conta.</td>
+</tr>
+<tr>
+<td>»»»»» creditDebitIndicator</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
+</tr>
+<tr>
+<td>»»»»» type</td>
+<td><a href="#schematransactiontypes">TransactionTypes</a></td>
+<td>null</td>
+<td>none</td>
+<td>Tipo de Transação</td>
+</tr>
+<tr>
+<td>»»»»» additionalInfo</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO</td>
+</tr>
+<tr>
+<td>»»»»» amount</td>
+<td>float</td>
+<td>null</td>
+<td>none</td>
+<td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
+</tr>
+<tr>
+<td>»»»»» currency</td>
+<td><a href="#schemacurrency">Currency</a></td>
+<td>null</td>
+<td>none</td>
+<td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
+</tr>
+<tr>
+<td>»»»»» transactionDate</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Data de lançamento da transação</td>
+</tr>
+<tr>
+<td>»»»»» payer</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Identificação do Pagador da transação</td>
+</tr>
+<tr>
+<td>»»»»» payee</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Identificação do Recebedor da transação</td>
+</tr>
+</tbody></table>
+
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>continued</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»» transactionsAuthorisedPayment</td>
+<td>[allOf]</td>
+<td>false</td>
+<td>none</td>
+<td>Lista das Informações relativas aos pagamentos autorizados.</td>
+</tr>
+<tr>
+<td>»»»»» creditDebitIndicator</td>
+<td><a href="#schema#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionseffectives/items/properties/creditdebitindicator">#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionsEffectives/items/properties/creditDebitIndicator</a></td>
+<td>null</td>
+<td>none</td>
+<td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
+</tr>
+<tr>
+<td>»»»»» type</td>
+<td><a href="#schematransactiontypes">TransactionTypes</a></td>
+<td>null</td>
+<td>none</td>
+<td>Tipo de Transação</td>
+</tr>
+<tr>
+<td>»»»»» additionalInfo</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO</td>
+</tr>
+<tr>
+<td>»»»»» amount</td>
+<td>float</td>
+<td>null</td>
+<td>none</td>
+<td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
+</tr>
+<tr>
+<td>»»»»» currency</td>
+<td><a href="#schemacurrency">Currency</a></td>
+<td>null</td>
+<td>none</td>
+<td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
+</tr>
+<tr>
+<td>»»»»» transactionDate</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Data de lançamento da transação</td>
+</tr>
+<tr>
+<td>»»»»» payer</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Identificação do Pagador da transação</td>
+</tr>
+<tr>
+<td>»»»»» payee</td>
+<td>string</td>
+<td>null</td>
+<td>none</td>
+<td>Identificação do Recebedor da transação</td>
+</tr>
+</tbody></table>
+
+<p>allOf</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>and</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>»»»»» <em>anonymous</em></td>
+<td>any</td>
+<td>null</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<p>continued</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>links</td>
+<td><a href="#schemacnpj">CNPJ</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td><a href="#schemameta">Meta</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>creditDebitIndicator</td>
+<td>CREDITO</td>
+</tr>
+<tr>
+<td>creditDebitIndicator</td>
+<td>DEBITO</td>
 </tr>
 </tbody></table>
 
@@ -24971,6 +25672,81 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <tr>
 <td><em>anonymous</em></td>
 <td>MOVIMENTACAO_PRESENCIAL</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_TransactionTypes">TransactionTypes</h2>
+
+<p><a id="schematransactiontypes"></a>
+<a id="schema_TransactionTypes"></a>
+<a id="tocStransactiontypes"></a>
+<a id="tocstransactiontypes"></a></p>
+
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"PIX"</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Tipo de Transação</p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Tipo de Transação</td>
+</tr>
+</tbody></table>
+
+<h4 id='schemas-metricas-properties-enumerated-values'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>TED</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>DOC</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>PIX</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>TRANSFERENCIA_MESMA_INSTITUICAO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>PAGAMENTO_BOLETO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>PAGAMENTO_CONVENIOS</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>ARRECADACAO</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>OUTRO</td>
 </tr>
 </tbody></table>
 

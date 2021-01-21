@@ -849,6 +849,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAccountBalances'
+  /accounts/v1/accounts-transactions:
+    get:
+      tags:
+        - API - Contas
+      summary: Informações relativas às Transações de crédito e débito realizadas e autorizadas
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar informações relativas às Transações de crédito e débito realizadas e autorizadas
+
+        ### Dicionário de dados
+
+        <a href='dictionary/accounts_transactions.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+      operationId: getAccountsTransactions
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Dados relativos a Transações de crédito e débito realizadas e autorizadas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountTransactions'
   /accounts/v1/accounts-overdraftlimits:
     get:
       tags:
@@ -4334,24 +4366,6 @@ components:
         * `acordos de compensação`: operações que sejam abrangidas por acordos para a compensação e liquidação de obrigações no âmbito do SFN, nos termos da Resolução 3.263, de 24 de fevereiro de 2005
         * `não aplicável`
       example: CESSAO_DIREITOS_CREDITORIOS
-    ResponseAccountIdentification:
-      type: object
-      required:
-        - data
-        - links
-        - meta
-      properties:
-        data:
-          type: object
-          required:
-            - brand
-          properties:
-            brand:
-              $ref: '#/components/schemas/AccountsIdentificationBrand'
-        links:
-          $ref: '#/components/schemas/CNPJ'
-        meta:
-          $ref: '#/components/schemas/Meta'
     ResponseAccountBalances:
       type: object
       required:
@@ -4409,6 +4423,24 @@ components:
           $ref: '#/components/schemas/CNPJ'
         meta:
           $ref: '#/components/schemas/Meta'
+    ResponseAccountIdentification:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - brand
+          properties:
+            brand:
+              $ref: '#/components/schemas/AccountsIdentificationBrand'
+        links:
+          $ref: '#/components/schemas/CNPJ'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ResponseAccountOverdraftLimits:
       type: object
       required:
@@ -4436,6 +4468,161 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/AccountOverdraftLimits'
+                  minItems: 1
+                  description: Companies traz uma lista de todas as instuições da Marca.
+        links:
+          $ref: '#/components/schemas/CNPJ'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ResponseAccountTransactions:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - brand
+          properties:
+            brand:
+              type: object
+              required:
+                - name
+                - companies
+              properties:
+                name:
+                  type: string
+                  description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
+                  maxLength: 80
+                  pattern: \w*\W*
+                companies:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - cnpjNumber
+                      - transactions
+                    allOf:
+                      - $ref: '#/components/schemas/CompanySimple'
+                    properties:
+                      balances:
+                        type: array
+                        items:
+                          type: object
+                          description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
+                          required:
+                            - transactionsEffectives: null
+                            - transactionsAuthorisedPayment: null
+                          allOf:
+                            - $ref: '#/components/schemas/RequestUpdateDateTime'
+                          properties:
+                            transactionsEffectives:
+                              type: array
+                              items:
+                                type: object
+                                description: Transações a débito e a crédito efetivadas em conta
+                                required: null
+                                allOf:
+                                  - creditDebitIndicator
+                                  - type
+                                  - amount
+                                  - transactionDate
+                                  - payer
+                                  - payee
+                                properties:
+                                  creditDebitIndicator:
+                                    type: string
+                                    enum:
+                                      - CREDITO
+                                      - DEBITO
+                                    description: |
+                                      Indicador do tipo de lançamento: a crédito ou a débito. 
+                                    example: CREDITO
+                                  type:
+                                    $ref: '#/components/schemas/TransactionTypes'
+                                  additionalInfo:
+                                    type: string
+                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                    maxLength: 30
+                                    pattern: \w*\W*
+                                    example: Empresa A1
+                                  amount:
+                                    type: float
+                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                    maxLength: 12
+                                    pattern: \w*\W*
+                                  currency:
+                                    $ref: '#/components/schemas/Currency'
+                                  transactionDate:
+                                    type: string
+                                    description: Data de lançamento da transação
+                                    maxLength: 10
+                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                  payer:
+                                    type: string
+                                    description: Identificação do Pagador da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                                  payee:
+                                    type: string
+                                    description: Identificação do Recebedor da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                              minItems: 1
+                              description: Lista das transações a débito e a crédito efetivadas em conta.
+                            transactionsAuthorisedPayment:
+                              type: array
+                              items:
+                                type: object
+                                description: Informações relativas aos pagamentos autorizados
+                                required: null
+                                allOf:
+                                  - creditDebitIndicator
+                                  - type
+                                  - amount
+                                  - transactionDate
+                                  - payer
+                                  - payee
+                                properties:
+                                  creditDebitIndicator:
+                                    $ref: '#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionsEffectives/items/properties/creditDebitIndicator'
+                                  type:
+                                    $ref: '#/components/schemas/TransactionTypes'
+                                  additionalInfo:
+                                    type: string
+                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                    maxLength: 30
+                                    pattern: \w*\W*
+                                    example: Empresa A1
+                                  amount:
+                                    type: float
+                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                    maxLength: 12
+                                    pattern: \w*\W*
+                                  currency:
+                                    $ref: '#/components/schemas/Currency'
+                                  transactionDate:
+                                    type: string
+                                    description: Data de lançamento da transação
+                                    maxLength: 10
+                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                  payer:
+                                    type: string
+                                    description: Identificação do Pagador da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                                  payee:
+                                    type: string
+                                    description: Identificação do Recebedor da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                              minItems: 1
+                              description: Lista das Informações relativas aos pagamentos autorizados.
+                        minItems: 1
+                        description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
                   minItems: 1
                   description: Companies traz uma lista de todas as instuições da Marca.
         links:
@@ -5505,6 +5692,20 @@ components:
         - MOVIMENTACAO_PRESENCIAL
       description: Lista de formas de movimentação possíveis para a conta
       example: MOVIMENTACAO_CARTAO
+    TransactionTypes:
+      type: string
+      enum:
+        - TED
+        - DOC
+        - PIX
+        - TRANSFERENCIA_MESMA_INSTITUICAO
+        - PAGAMENTO_BOLETO
+        - PAGAMENTO_CONVENIOS
+        - ARRECADACAO
+        - OUTRO
+      description: |
+        Tipo de Transação
+      example: PIX
     UnarrangedAccountOverdraftRate:
       type: object
       required:

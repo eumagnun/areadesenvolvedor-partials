@@ -12,7 +12,7 @@ properties:
   creditDebitIndicator:
     $ref: "./CreditDebitIndicator.yaml"
   type:
-    $ref: "./TransactionType.yaml"
+    $ref: "./TransactionTypes.yaml"
   additionalInfo:
     type: string
     description: "Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO"
