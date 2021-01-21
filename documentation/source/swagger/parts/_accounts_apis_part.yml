@@ -49,6 +49,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseAccountBalances'  
 
+  /accounts-transactions:
+    get:
+      tags:
+        - Accounts Transactions
+      summary: Transações de crédito e débito realizadas e autorizadas
+      description:  Obtém dados relativos a Transações de crédito e débito realizadas e autorizadas
+      operationId: getAccountsTransactions
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados de Transações de crédito e débito realizadas e autorizadas obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountTransactions'
+
   /accounts-overdraftlimits:
     get:
       tags:
@@ -61,7 +79,7 @@ paths:
         - $ref: "#/components/parameters/pageSize"
       responses:
         '200':
-          description: Dados de Limites referentes ao valor das operações de crédito com sucesso.
+          description: Dados de Limites referentes ao valor das operações de crédito obtidos com sucesso.
           content:
             application/json:
               schema:
@@ -71,7 +89,9 @@ components:
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml
     ResponseAccountBalances:
-      $ref: ./schemas/ResponseAccountBalances.yaml      
+      $ref: ./schemas/ResponseAccountBalances.yaml   
+    ResponseAccountTransactions:
+      $ref: ./schemas/ResponseAccountTransactions.yaml             
     ResponseAccountOverdraftLimits:
       $ref: ./schemas/ResponseAccountOverdraftLimits.yaml         
   securitySchemes:

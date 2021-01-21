@@ -1,0 +1,14 @@
+type: object
+required:
+  - name
+  - cnpjNumber
+  - transactions
+allOf:
+  - $ref: './CompanySimple.yaml'  
+properties:
+ balances:
+    type: array
+    items:
+      $ref: './AccountTransactions.yaml'
+    minItems: 1
+    description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
