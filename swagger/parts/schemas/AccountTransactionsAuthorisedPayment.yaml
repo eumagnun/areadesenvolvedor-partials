@@ -1,0 +1,43 @@
+type: object
+description: Informações relativas aos pagamentos autorizados
+required:
+allOf:
+  - creditDebitIndicator
+  - type  
+  - amount
+  - transactionDate 
+  - payer 
+  - payee       
+properties:
+  creditDebitIndicator:
+    $ref: "./CreditDebitIndicator.yaml"
+  type:
+    $ref: "./TransactionType.yaml"
+  additionalInfo:
+    type: string
+    description: "Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO"
+    maxLength: 30
+    pattern: \w*\W*
+    example: 'Empresa A1'
+  amount:
+    type: float
+    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+    maxLength: 12
+    pattern: \w*\W*
+  currency:
+    $ref:  "./Currency.yaml"
+  transactionDate:
+    type: string
+    description: Data de lançamento da transação
+    maxLength: 10
+    pattern: ^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$  
+  payer:
+    type: string
+    description: Identificação do Pagador da transação
+    maxLength: 100
+    pattern: \w*\W*
+  payee:
+    type: string
+    description: Identificação do Recebedor da transação
+    maxLength: 100
+    pattern: \w*\W*

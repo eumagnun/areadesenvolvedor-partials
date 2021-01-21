@@ -47,6 +47,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAccountBalances'
+  /accounts-transactions:
+    get:
+      tags:
+        - Accounts Transactions
+      summary: Transações de crédito e débito realizadas e autorizadas
+      description: Obtém dados relativos a Transações de crédito e débito realizadas e autorizadas
+      operationId: getAccountsTransactions
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Dados de Transações de crédito e débito realizadas e autorizadas obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountTransactions'
   /accounts-overdraftlimits:
     get:
       tags:
@@ -59,7 +76,7 @@ paths:
         - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
-          description: Dados de Limites referentes ao valor das operações de crédito com sucesso.
+          description: Dados de Limites referentes ao valor das operações de crédito obtidos com sucesso.
           content:
             application/json:
               schema:
@@ -103,9 +120,9 @@ components:
                       account:
                         description: Objeto agrupador informações de Contas
                         type: object
-                        required:
-                          - requestDateTime
-                          - updateDateTime
+                        required: null
+                        allOf:
+                          - $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/allOf/0'
                           - number
                           - digitNumber
                           - branchCode
@@ -113,18 +130,6 @@ components:
                           - type
                           - subtype
                         properties:
-                          requestDateTime:
-                            type: string
-                            maxLength: 20
-                            pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                            description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-                            example: '2020-07-21T08:30:00Z'
-                          updateDateTime:
-                            type: string
-                            maxLength: 20
-                            pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                            description: 'Data e hora da atualização, conforme especificação RFC-3339. '
-                            example: '2020-07-21T08:30:00Z'
                           number:
                             type: string
                             maxLength: 8
@@ -238,25 +243,13 @@ components:
                         type: array
                         items:
                           type: object
-                          required:
-                            - requestDateTime
-                            - updateDateTime
+                          required: null
+                          allOf:
+                            - $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/allOf/0'
                             - type
                             - amount
                             - currency
                           properties:
-                            requestDateTime:
-                              type: string
-                              maxLength: 20
-                              pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                              description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-                              example: '2020-07-21T08:30:00Z'
-                            updateDateTime:
-                              type: string
-                              maxLength: 20
-                              pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                              description: 'Data e hora da atualização, conforme especificação RFC-3339.'
-                              example: '2020-07-21T08:30:00Z'
                             type:
                               type: string
                               enum:
@@ -270,7 +263,7 @@ components:
                                 Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta 
                               example: SALDO_DISPONIVEL
                             currency:
-                              $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/currency'
+                              $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/currency'
                         minItems: 1
                         description: Relação de informações de um contratante do serviço de correspondente.
                   minItems: 1
@@ -310,6 +303,173 @@ components:
               type: integer
               description: Total de páginas para os registros encontrados
               example: 1
+    ResponseAccountTransactions:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - brand
+          properties:
+            brand:
+              type: object
+              required:
+                - name
+                - companies
+              properties:
+                name:
+                  type: string
+                  description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
+                  maxLength: 80
+                  pattern: \w*\W*
+                companies:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - cnpjNumber
+                      - transactions
+                    allOf:
+                      - $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/allOf/0'
+                    properties:
+                      balances:
+                        type: array
+                        items:
+                          type: object
+                          description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
+                          required:
+                            - transactionsEffectives: null
+                            - transactionsAuthorisedPayment: null
+                          allOf:
+                            - $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/allOf/0'
+                          properties:
+                            transactionsEffectives:
+                              type: array
+                              items:
+                                type: object
+                                description: Transações a débito e a crédito efetivadas em conta
+                                required: null
+                                allOf:
+                                  - creditDebitIndicator
+                                  - type
+                                  - amount
+                                  - transactionDate
+                                  - payer
+                                  - payee
+                                properties:
+                                  creditDebitIndicator:
+                                    type: string
+                                    enum:
+                                      - CREDITO
+                                      - DEBITO
+                                    description: |
+                                      Indicador do tipo de lançamento: a crédito ou a débito. 
+                                    example: CREDITO
+                                  type:
+                                    type: string
+                                    enum:
+                                      - TED
+                                      - DOC
+                                      - PIX
+                                      - TRANSFERENCIA_MESMA_INSTITUICAO
+                                      - PAGAMENTO_BOLETO
+                                      - PAGAMENTO_CONVENIOS
+                                      - ARRECADACAO
+                                      - OUTRO
+                                    description: |
+                                      Tipo de Transação
+                                    example: PIX
+                                  additionalInfo:
+                                    type: string
+                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                    maxLength: 30
+                                    pattern: \w*\W*
+                                    example: Empresa A1
+                                  amount:
+                                    type: float
+                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                    maxLength: 12
+                                    pattern: \w*\W*
+                                  currency:
+                                    $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/currency'
+                                  transactionDate:
+                                    type: string
+                                    description: Data de lançamento da transação
+                                    maxLength: 10
+                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                  payer:
+                                    type: string
+                                    description: Identificação do Pagador da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                                  payee:
+                                    type: string
+                                    description: Identificação do Recebedor da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                              minItems: 1
+                              description: Lista das transações a débito e a crédito efetivadas em conta.
+                            transactionsAuthorisedPayment:
+                              type: array
+                              items:
+                                type: object
+                                description: Informações relativas aos pagamentos autorizados
+                                required: null
+                                allOf:
+                                  - creditDebitIndicator
+                                  - type
+                                  - amount
+                                  - transactionDate
+                                  - payer
+                                  - payee
+                                properties:
+                                  creditDebitIndicator:
+                                    $ref: '#/paths/~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionsEffectives/items/properties/creditDebitIndicator'
+                                  type:
+                                    $ref: '#/paths/~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionsEffectives/items/properties/type'
+                                  additionalInfo:
+                                    type: string
+                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                    maxLength: 30
+                                    pattern: \w*\W*
+                                    example: Empresa A1
+                                  amount:
+                                    type: float
+                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                    maxLength: 12
+                                    pattern: \w*\W*
+                                  currency:
+                                    $ref: '#/paths/~1accounts-overdraftlimits/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/currency'
+                                  transactionDate:
+                                    type: string
+                                    description: Data de lançamento da transação
+                                    maxLength: 10
+                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                  payer:
+                                    type: string
+                                    description: Identificação do Pagador da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                                  payee:
+                                    type: string
+                                    description: Identificação do Recebedor da transação
+                                    maxLength: 100
+                                    pattern: \w*\W*
+                              minItems: 1
+                              description: Lista das Informações relativas aos pagamentos autorizados.
+                        minItems: 1
+                        description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
+                  minItems: 1
+                  description: Companies traz uma lista de todas as instuições da Marca.
+        links:
+          $ref: '#/components/schemas/ResponseAccountBalances/properties/links'
+        meta:
+          $ref: '#/components/schemas/ResponseAccountBalances/properties/meta'
     ResponseAccountOverdraftLimits:
       type: object
       required:
@@ -325,49 +485,64 @@ components:
             brand:
               type: object
               required:
-                - requestDateTime
-                - updateDateTime
-                - type
-                - amount
-                - currency
-              allOf:
-                - type: object
-                  required:
-                    - requestDateTime
-                    - updateDateTime
-                  properties:
-                    requestDateTime:
-                      type: string
-                      maxLength: 20
-                      pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                      description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-                      example: '2020-07-21T08:30:00Z'
-                    updateDateTime:
-                      type: string
-                      maxLength: 20
-                      pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                      description: 'Data e hora da atualização, conforme especificação RFC-3339.'
-                      example: '2020-07-21T08:30:00Z'
+                - name
+                - companies
               properties:
-                type:
+                name:
                   type: string
-                  enum:
-                    - VALOR_UTILIZADO
-                    - VALOR_DISPONIVEL
-                    - SALDO_DESCOBERTO
-                  description: |
-                    Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)
-                    valor utilizado do limite do cheque especial
-                    valor disponível do limite do cheque especial
-                    saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante 
-                  example: VALOR_UTILIZADO
-                currency:
-                  type: string
-                  pattern: '^(\w{3}){1}$'
-                  maxLength: 3
-                  x-cds-type: CurrencyString
-                  description: 'Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217'
-                  example: BRL
+                  description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
+                  maxLength: 80
+                  pattern: \w*\W*
+                companies:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - requestDateTime
+                      - updateDateTime
+                      - type
+                      - amount
+                      - currency
+                    allOf:
+                      - type: object
+                        required:
+                          - requestDateTime
+                          - updateDateTime
+                        properties:
+                          requestDateTime:
+                            type: string
+                            maxLength: 20
+                            pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                            description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
+                            example: '2020-07-21T08:30:00Z'
+                          updateDateTime:
+                            type: string
+                            maxLength: 20
+                            pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                            description: 'Data e hora da atualização, conforme especificação RFC-3339.'
+                            example: '2020-07-21T08:30:00Z'
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - VALOR_UTILIZADO
+                          - VALOR_DISPONIVEL
+                          - SALDO_DESCOBERTO
+                        description: |
+                          Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)
+                          valor utilizado do limite do cheque especial
+                          valor disponível do limite do cheque especial
+                          saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante 
+                        example: VALOR_UTILIZADO
+                      currency:
+                        type: string
+                        pattern: '^(\w{3}){1}$'
+                        maxLength: 3
+                        x-cds-type: CurrencyString
+                        description: 'Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217'
+                        example: BRL
+                  minItems: 1
+                  description: Companies traz uma lista de todas as instuições da Marca.
         links:
           $ref: '#/components/schemas/ResponseAccountBalances/properties/links'
         meta:

@@ -1053,9 +1053,9 @@ components:
       example: CONTA_DEPOSITO_A_VISTA
     AccountsIdentification:
       type: object
-      required:
-        - requestDateTime
-        - updateDateTime
+      required: null
+      allOf:
+        - $ref: '#/components/schemas/RequestUpdateDateTime'
         - number
         - digitNumber
         - branchCode
@@ -1063,18 +1063,6 @@ components:
         - type
         - subtype
       properties:
-        requestDateTime:
-          type: string
-          maxLength: 20
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-          description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-          example: '2020-07-21T08:30:00Z'
-        updateDateTime:
-          type: string
-          maxLength: 20
-          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-          description: 'Data e hora da atualização, conforme especificação RFC-3339. '
-          example: '2020-07-21T08:30:00Z'
         number:
           type: string
           maxLength: 8
@@ -4402,25 +4390,13 @@ components:
                         type: array
                         items:
                           type: object
-                          required:
-                            - requestDateTime
-                            - updateDateTime
+                          required: null
+                          allOf:
+                            - $ref: '#/components/schemas/RequestUpdateDateTime'
                             - type
                             - amount
                             - currency
                           properties:
-                            requestDateTime:
-                              type: string
-                              maxLength: 20
-                              pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                              description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-                              example: '2020-07-21T08:30:00Z'
-                            updateDateTime:
-                              type: string
-                              maxLength: 20
-                              pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                              description: 'Data e hora da atualização, conforme especificação RFC-3339.'
-                              example: '2020-07-21T08:30:00Z'
                             type:
                               $ref: '#/components/schemas/BalanceType'
                             currency:
@@ -4446,7 +4422,22 @@ components:
             - brand
           properties:
             brand:
-              $ref: '#/components/schemas/AccountOverdraftLimits'
+              type: object
+              required:
+                - name
+                - companies
+              properties:
+                name:
+                  type: string
+                  description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.'
+                  maxLength: 80
+                  pattern: \w*\W*
+                companies:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/AccountOverdraftLimits'
+                  minItems: 1
+                  description: Companies traz uma lista de todas as instuições da Marca.
         links:
           $ref: '#/components/schemas/CNPJ'
         meta:

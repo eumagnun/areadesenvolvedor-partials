@@ -10,7 +10,7 @@ properties:
       - brand
     properties:
       brand:
-        $ref: './AccountOverdraftLimitsBrand.yaml'
+        $ref: './AccountTransactionsBrand.yaml'
   links:
     $ref: './Links.yaml'
   meta:
