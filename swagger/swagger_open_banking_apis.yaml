@@ -1154,7 +1154,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/CompanySimple'
       properties:
-        accountIdentification:
+        accountsIdentification:
           $ref: '#/components/schemas/AccountsIdentification'
           description: Objeto agrupador informações de Contas
     AccountsIncomeRate:

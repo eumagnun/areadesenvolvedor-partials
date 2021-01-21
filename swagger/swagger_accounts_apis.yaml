@@ -167,7 +167,7 @@ components:
               pattern: \w*\W*
               example: Empresa A1
       properties:
-        accountIdentification:
+        accountsIdentification:
           $ref: '#/components/schemas/AccountIdentification'
           description: Objeto agrupador informações de Contas
     AccountIdentification:
