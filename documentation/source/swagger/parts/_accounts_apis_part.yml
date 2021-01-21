@@ -88,12 +88,26 @@ components:
   schemas:
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml
+    Brand:
+      $ref: './AccountIdentificationBrand.yaml'    
+    AccountType:
+        $ref: "./AccountType.yaml"
+    AccountSubType:
+      $ref: "./AccountSubType.yaml"      
+    AccountIdentificationCompany:
+      $ref: './AccountIdentificationCompany.yaml'  
+    AccountIdentification:
+      $ref: './AccountIdentification.yaml'            
     ResponseAccountBalances:
       $ref: ./schemas/ResponseAccountBalances.yaml   
     ResponseAccountTransactions:
       $ref: ./schemas/ResponseAccountTransactions.yaml             
     ResponseAccountOverdraftLimits:
-      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml         
+      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml    
+    Links:
+      $ref: ./schemas/Links.yaml
+    Meta:
+      $ref: ./schemas/Meta.yaml           
   securitySchemes:
     $ref: "./schemas/securitySchemes.yaml"
   parameters:
