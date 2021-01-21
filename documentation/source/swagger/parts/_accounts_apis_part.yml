@@ -89,15 +89,15 @@ components:
     ResponseAccountIdentification:
       $ref: ./schemas/ResponseAccountIdentification.yaml
     Brand:
-      $ref: './AccountIdentificationBrand.yaml'    
+      $ref: './schemas/AccountIdentificationBrand.yaml'    
     AccountType:
-        $ref: "./AccountType.yaml"
+        $ref: "./schemas/AccountType.yaml"
     AccountSubType:
-      $ref: "./AccountSubType.yaml"      
+      $ref: "./schemas/AccountSubType.yaml"      
     AccountIdentificationCompany:
-      $ref: './AccountIdentificationCompany.yaml'  
+      $ref: './schemas/AccountIdentificationCompany.yaml'  
     AccountIdentification:
-      $ref: './AccountIdentification.yaml'            
+      $ref: './schemas/AccountIdentification.yaml'            
     ResponseAccountBalances:
       $ref: ./schemas/ResponseAccountBalances.yaml   
     ResponseAccountTransactions:
