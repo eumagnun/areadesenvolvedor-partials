@@ -103,6 +103,7 @@ components:
           $ref: '#/components/schemas/Meta'
     Brand:
       type: object
+      description: Objeto que define a Organização controladora do grupo de instituições financeiras
       required:
         - name
         - companies
@@ -117,7 +118,7 @@ components:
           items:
             $ref: '#/components/schemas/AccountIdentificationCompany'
           minItems: 1
-          description: Companies traz uma lista de todas as instuituições da Marca.
+          description: Companies traz uma lista de todas as instituições da Marca.
     AccountType:
       type: string
       enum:
@@ -141,6 +142,7 @@ components:
       example: INDIVIDUAL
     AccountIdentificationCompany:
       type: object
+      description: Instituições da Marca
       required:
         - name
         - cnpjNumber
@@ -245,6 +247,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -258,6 +261,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -269,12 +273,10 @@ components:
                         type: array
                         items:
                           type: object
-                          required: null
+                          required:
+                            - type
                           allOf:
                             - $ref: '#/components/schemas/AccountIdentification/allOf/0'
-                            - type
-                            - amount
-                            - currency
                           properties:
                             type:
                               type: string
@@ -288,6 +290,10 @@ components:
                                 Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial
                                 Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta 
                               example: SALDO_DISPONIVEL
+                            amount:
+                              type: number
+                              description: 'Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.'
+                              maxLength: 12
                             currency:
                               type: string
                               pattern: '^(\w{3}){1}$'
@@ -298,7 +304,7 @@ components:
                         minItems: 1
                         description: Relação de informações de um contratante do serviço de correspondente.
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -317,6 +323,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -330,6 +337,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -467,7 +475,7 @@ components:
                         minItems: 1
                         description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/Links'
         meta:
@@ -486,6 +494,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -499,6 +508,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -510,12 +520,11 @@ components:
                         type: array
                         items:
                           type: object
+                          description: Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
                           required:
                             - requestDateTime
                             - updateDateTime
                             - type
-                            - amount
-                            - currency
                           allOf:
                             - $ref: '#/components/schemas/AccountIdentification/allOf/0'
                           properties:
@@ -531,12 +540,16 @@ components:
                                 valor disponível do limite do cheque especial
                                 saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante 
                               example: VALOR_UTILIZADO
+                            amount:
+                              type: number
+                              description: Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.
+                              maxLength: 12
                             currency:
                               $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsBalances/items/properties/currency'
                         minItems: 1
                         description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/Links'
         meta:

@@ -5994,6 +5994,7 @@ This operation does not require authentication
           </span><span class="nl">"accountsBalances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
@@ -6296,6 +6297,7 @@ This operation does not require authentication
           </span><span class="nl">"accountsOverdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
@@ -6847,12 +6849,18 @@ This operation does not require authentication
 <a id="tocsaccountoverdraftlimits"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+</span></code></pre></div>
+
+<p>Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente</p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6870,9 +6878,16 @@ This operation does not require authentication
 <td>Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)<br>valor utilizado do limite do cheque especial<br>valor disponível do limite do cheque especial<br>saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante</td>
 </tr>
 <tr>
+<td>amount</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.</td>
+</tr>
+<tr>
 <td>currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
-<td>true</td>
+<td>false</td>
 <td>none</td>
 <td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
@@ -6884,6 +6899,7 @@ This operation does not require authentication
 <a id="schema_AccountPriorityService"></a>
 <a id="tocSaccountpriorityservice"></a>
 <a id="tocsaccountpriorityservice"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSFERENCIA_TED_PESSOAL_OU_PRESENCIAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CADASTRO"</span><span class="p">,</span><span class="w">
@@ -7531,7 +7547,12 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+</span></code></pre></div>
+
+<p>Objeto que define a Organização controladora do grupo de instituições financeiras</p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7553,7 +7574,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <td>[<a href="#schemaaccountsidentificationcompany">AccountsIdentificationCompany</a>]</td>
 <td>true</td>
 <td>none</td>
-<td>Companies traz uma lista de todas as instuituições da Marca.</td>
+<td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 </tbody></table>
 
@@ -7563,6 +7584,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="schema_AccountsIdentificationCompany"></a>
 <a id="tocSaccountsidentificationcompany"></a>
 <a id="tocsaccountsidentificationcompany"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"accountsIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
@@ -7578,7 +7600,12 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
+</span></code></pre></div>
+
+<p>Instituições da Marca</p>
+
+<h3 id='schemas-metricas-properties'>Properties</h3>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7603,6 +7630,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="schema_AccountsIncomeRate"></a>
 <a id="tocSaccountsincomerate"></a>
 <a id="tocsaccountsincomerate"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"savingAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Para depósitos até 03/05/2012 – remuneração trimestral de 1,5% + TR, sempre creditada no aniversário da conta; Para depósitos a partir de 04/05/2012 – 70% da Selic + TR quando a Selic for igual ou inferior a 8,5% ao ano e 1,5% + TR caso a Selic seja superior a 8,5%."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"prepaidPaymentAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40% Rendimento a.m."</span><span class="w">
@@ -21322,6 +21350,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
           </span><span class="nl">"accountsBalances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
@@ -21368,7 +21397,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>object</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Objeto que define a Organização controladora do grupo de instituições financeiras</td>
 </tr>
 <tr>
 <td>»» name</td>
@@ -21382,7 +21411,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>[allOf]</td>
 <td>true</td>
 <td>none</td>
-<td>Companies traz uma lista de todas as instuições da Marca.</td>
+<td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
 <td>»»» accountsBalances</td>
@@ -21394,110 +21423,24 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <tr>
 <td>»»»» type</td>
 <td><a href="#schemabalancetype">BalanceType</a></td>
-<td>null</td>
+<td>true</td>
 <td>none</td>
 <td>tipos de saldo em conta: (vide enum) informados:<br>Saldo disponível para utilização imediata. No caso de conta de depósito a vista, sem considerar cheque especial e investimentos atrelados a conta. Admite saldo negativo.<br>Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial<br>Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta</td>
 </tr>
 <tr>
+<td>»»»» amount</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.</td>
+</tr>
+<tr>
 <td>»»»» currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
-<td>null</td>
+<td>false</td>
 <td>none</td>
 <td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
-</tbody></table>
-
-<p>allOf</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»»»» <em>anonymous</em></td>
-<td><a href="#schemarequestupdatedatetime">RequestUpdateDateTime</a></td>
-<td>null</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p>and</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»»»» <em>anonymous</em></td>
-<td>any</td>
-<td>null</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p>and</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»»»» <em>anonymous</em></td>
-<td>any</td>
-<td>null</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p>and</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>»»»» <em>anonymous</em></td>
-<td>any</td>
-<td>null</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p>continued</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>links</td>
 <td><a href="#schemacnpj">CNPJ</a></td>
@@ -21577,7 +21520,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td><a href="#schemaaccountsidentificationbrand">AccountsIdentificationBrand</a></td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Objeto que define a Organização controladora do grupo de instituições financeiras</td>
 </tr>
 <tr>
 <td>links</td>
@@ -21610,6 +21553,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
           </span><span class="nl">"accountsOverdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
               </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
@@ -21656,7 +21600,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>object</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Objeto que define a Organização controladora do grupo de instituições financeiras</td>
 </tr>
 <tr>
 <td>»» name</td>
@@ -21670,7 +21614,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>[allOf]</td>
 <td>true</td>
 <td>none</td>
-<td>Companies traz uma lista de todas as instuições da Marca.</td>
+<td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
 <td>»»» accountsOverdraftLimits</td>
@@ -21778,7 +21722,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>object</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Objeto que define a Organização controladora do grupo de instituições financeiras</td>
 </tr>
 <tr>
 <td>»» name</td>
@@ -21792,7 +21736,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>[allOf]</td>
 <td>true</td>
 <td>none</td>
-<td>Companies traz uma lista de todas as instuições da Marca.</td>
+<td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
 <td>»»» accountsTransactions</td>

@@ -974,17 +974,20 @@ components:
           $ref: '#/components/schemas/MaximumPrice'
     AccountOverdraftLimits:
       type: object
+      description: Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
       required:
         - requestDateTime
         - updateDateTime
         - type
-        - amount
-        - currency
       allOf:
         - $ref: '#/components/schemas/RequestUpdateDateTime'
       properties:
         type:
           $ref: '#/components/schemas/OverdraftLimitType'
+        amount:
+          type: number
+          description: Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.
+          maxLength: 12
         currency:
           $ref: '#/components/schemas/Currency'
     AccountPriorityService:
@@ -1130,6 +1133,7 @@ components:
           $ref: '#/components/schemas/AccountSubType'
     AccountsIdentificationBrand:
       type: object
+      description: Objeto que define a Organização controladora do grupo de instituições financeiras
       required:
         - name
         - companies
@@ -1144,9 +1148,10 @@ components:
           items:
             $ref: '#/components/schemas/AccountsIdentificationCompany'
           minItems: 1
-          description: Companies traz uma lista de todas as instuituições da Marca.
+          description: Companies traz uma lista de todas as instituições da Marca.
     AccountsIdentificationCompany:
       type: object
+      description: Instituições da Marca
       required:
         - name
         - cnpjNumber
@@ -4380,6 +4385,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -4393,6 +4399,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -4404,21 +4411,23 @@ components:
                         type: array
                         items:
                           type: object
-                          required: null
+                          required:
+                            - type
                           allOf:
                             - $ref: '#/components/schemas/RequestUpdateDateTime'
-                            - type
-                            - amount
-                            - currency
                           properties:
                             type:
                               $ref: '#/components/schemas/BalanceType'
+                            amount:
+                              type: number
+                              description: 'Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.'
+                              maxLength: 12
                             currency:
                               $ref: '#/components/schemas/Currency'
                         minItems: 1
                         description: Relação de informações de um contratante do serviço de correspondente.
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/CNPJ'
         meta:
@@ -4455,6 +4464,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -4468,6 +4478,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -4482,7 +4493,7 @@ components:
                         minItems: 1
                         description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/CNPJ'
         meta:
@@ -4501,6 +4512,7 @@ components:
           properties:
             brand:
               type: object
+              description: Objeto que define a Organização controladora do grupo de instituições financeiras
               required:
                 - name
                 - companies
@@ -4514,6 +4526,7 @@ components:
                   type: array
                   items:
                     type: object
+                    description: Instituições da Marca
                     required:
                       - name
                       - cnpjNumber
@@ -4639,7 +4652,7 @@ components:
                         minItems: 1
                         description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
                   minItems: 1
-                  description: Companies traz uma lista de todas as instuições da Marca.
+                  description: Companies traz uma lista de todas as instituições da Marca.
         links:
           $ref: '#/components/schemas/CNPJ'
         meta:
