@@ -907,7 +907,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseAccountTransactions'  
 
-  /accounts/v1/accounts-overdraftlimits:
+  /accounts/v1/accounts-overdraft-limits:
     get:
       tags:
         - API - Contas
