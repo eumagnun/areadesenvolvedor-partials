@@ -6,7 +6,7 @@ required:
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
- balances:
+ accountsBalances:
     type: array
     items:
       $ref: './AccountBalances.yaml'
