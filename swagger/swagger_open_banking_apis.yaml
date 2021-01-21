@@ -1150,11 +1150,11 @@ components:
       required:
         - name
         - cnpjNumber
-        - account
+        - accountsIdentification
       allOf:
         - $ref: '#/components/schemas/CompanySimple'
       properties:
-        account:
+        accountIdentification:
           $ref: '#/components/schemas/AccountsIdentification'
           description: Objeto agrupador informações de Contas
     AccountsIncomeRate:
@@ -4396,7 +4396,7 @@ components:
                     required:
                       - name
                       - cnpjNumber
-                      - balances
+                      - accountsBalances
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
@@ -4467,7 +4467,20 @@ components:
                 companies:
                   type: array
                   items:
-                    $ref: '#/components/schemas/AccountOverdraftLimits'
+                    type: object
+                    required:
+                      - name
+                      - cnpjNumber
+                      - accountsOverdraftLimits
+                    allOf:
+                      - $ref: '#/components/schemas/CompanySimple'
+                    properties:
+                      accountsOverdraftLimits:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AccountOverdraftLimits'
+                        minItems: 1
+                        description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
                   minItems: 1
                   description: Companies traz uma lista de todas as instuições da Marca.
         links:
@@ -4504,22 +4517,24 @@ components:
                     required:
                       - name
                       - cnpjNumber
-                      - transactions
+                      - accountsTransactions
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
-                      balances:
+                      accountsTransactions:
                         type: array
                         items:
                           type: object
                           description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
                           required:
-                            - transactionsEffectives: null
-                            - transactionsAuthorisedPayment: null
+                            - requestDateTime
+                            - updateDateTime
+                            - effectives: null
+                            - authorisedPayment: null
                           allOf:
                             - $ref: '#/components/schemas/RequestUpdateDateTime'
                           properties:
-                            transactionsEffectives:
+                            effectives:
                               type: array
                               items:
                                 type: object
@@ -4573,7 +4588,7 @@ components:
                                     pattern: \w*\W*
                               minItems: 1
                               description: Lista das transações a débito e a crédito efetivadas em conta.
-                            transactionsAuthorisedPayment:
+                            authorisedPayment:
                               type: array
                               items:
                                 type: object
@@ -4588,7 +4603,7 @@ components:
                                   - payee
                                 properties:
                                   creditDebitIndicator:
-                                    $ref: '#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/transactionsEffectives/items/properties/creditDebitIndicator'
+                                    $ref: '#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsTransactions/items/properties/effectives/items/properties/creditDebitIndicator'
                                   type:
                                     $ref: '#/components/schemas/TransactionTypes'
                                   additionalInfo:

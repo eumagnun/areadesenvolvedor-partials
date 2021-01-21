@@ -2,7 +2,7 @@ type: object
 required:
   - name
   - cnpjNumber
-  - balances
+  - accountsBalances
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:

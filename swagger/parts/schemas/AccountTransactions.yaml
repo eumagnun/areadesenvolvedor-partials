@@ -1,18 +1,20 @@
 type: object
 description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
 required:
-  -  transactionsEffectives:
-  -  transactionsAuthorisedPayment:
+  - requestDateTime
+  - updateDateTime  
+  - effectives:
+  - authorisedPayment:
 allOf:
   - $ref: './RequestUpdateDateTime.yaml'                
 properties:
-  transactionsEffectives:
+  effectives:
     type: array
     items:
       $ref: './AccountTransactionsEffectives.yaml'
     minItems: 1
     description: Lista das transações a débito e a crédito efetivadas em conta.
-  transactionsAuthorisedPayment:
+  authorisedPayment:
     type: array
     items:
       $ref: './AccountTransactionsAuthorisedPayment.yaml'

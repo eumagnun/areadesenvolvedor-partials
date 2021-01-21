@@ -2,11 +2,11 @@ type: object
 required:
   - name
   - cnpjNumber
-  - overdraftLimits
+  - accountsOverdraftLimits
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
-  overdraftLimits:
+  accountsOverdraftLimits:
     type: array
     items:
       $ref:  './AccountOverdraftLimits.yaml'

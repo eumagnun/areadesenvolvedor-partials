@@ -2,11 +2,11 @@ type: object
 required:
   - name
   - cnpjNumber
-  - transactions
+  - accountsTransactions
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
- balances:
+ accountsTransactions:
     type: array
     items:
       $ref: './AccountTransactions.yaml'
