@@ -265,7 +265,7 @@ components:
                     allOf:
                       - $ref: '#/components/schemas/AccountIdentificationCompany/allOf/0'
                     properties:
-                      balances:
+                      accountsBalances:
                         type: array
                         items:
                           type: object
@@ -398,7 +398,7 @@ components:
                                     maxLength: 12
                                     pattern: \w*\W*
                                   currency:
-                                    $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/currency'
+                                    $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsBalances/items/properties/currency'
                                   transactionDate:
                                     type: string
                                     description: Data de lançamento da transação
@@ -446,7 +446,7 @@ components:
                                     maxLength: 12
                                     pattern: \w*\W*
                                   currency:
-                                    $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/currency'
+                                    $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsBalances/items/properties/currency'
                                   transactionDate:
                                     type: string
                                     description: Data de lançamento da transação
@@ -532,7 +532,7 @@ components:
                                 saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante 
                               example: VALOR_UTILIZADO
                             currency:
-                              $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/balances/items/properties/currency'
+                              $ref: '#/paths/~1accounts-balances/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsBalances/items/properties/currency'
                         minItems: 1
                         description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
                   minItems: 1

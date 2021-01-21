@@ -4400,7 +4400,7 @@ components:
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
-                      balances:
+                      accountsBalances:
                         type: array
                         items:
                           type: object
