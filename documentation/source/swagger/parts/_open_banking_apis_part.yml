@@ -873,6 +873,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseAccountBalances'
 
+  /accounts/v1/accounts-transactions:
+    get:
+      tags:
+        - API - Contas
+      summary: Informações relativas às Transações de crédito e débito realizadas e autorizadas
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Este *endpoint* possibilita ao diretório consultar informações relativas às Transações de crédito e débito realizadas e autorizadas
+        
+        ### Dicionário de dados
+
+        <a href='dictionary/accounts_transactions.csv' target="_blank">Fazer download do dicionário de dados</a>
+
+        ### Especificação em OAS 3.0
+
+        <a href='swagger/swagger_accounts_apis.yaml'>Download da Especificação (OAS 3.0)</a>
+
+      operationId: "getAccountsTransactions"
+      parameters:
+        - $ref: "#/components/parameters/page"
+        - $ref: "#/components/parameters/pageSize"
+      responses:
+        '200':
+          description: Dados relativos a Transações de crédito e débito realizadas e autorizadas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccountTransactions'  
+
   /accounts/v1/accounts-overdraftlimits:
     get:
       tags:
@@ -1186,12 +1220,14 @@ components:
       $ref: ./schemas/RequestUpdateDateTime.yaml      
     RequiredWarranty:
       $ref: ./schemas/RequiredWarranty.yaml
-    ResponseAccountIdentification:
-      $ref: ./schemas/ResponseAccountIdentification.yaml       
     ResponseAccountBalances:
       $ref: ./schemas/ResponseAccountBalances.yaml
+    ResponseAccountIdentification:
+      $ref: ./schemas/ResponseAccountIdentification.yaml          
     ResponseAccountOverdraftLimits:
-      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml                      
+      $ref: ./schemas/ResponseAccountOverdraftLimits.yaml      
+    ResponseAccountTransactions:
+      $ref: ./schemas/ResponseAccountTransactions.yaml                          
     ResponseBankingAgentsList:
       $ref: ./schemas/ResponseBankingAgentsList.yaml
     ResponseBranchesList:
@@ -1252,6 +1288,8 @@ components:
       $ref: ./schemas/Status.yaml
     TransactionMethods:
       $ref: ./schemas/TransactionMethods.yaml
+    TransactionTypes:
+      $ref: ./schemas/TransactionTypes.yaml    
     UnarrangedAccountOverdraftRate:
       $ref: ./schemas/UnarrangedAccountOverdraftRate.yaml
     UnarrangedAccountOverdraftService:
