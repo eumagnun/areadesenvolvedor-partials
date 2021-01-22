@@ -3,13 +3,9 @@ description: Instituições da Marca
 required:
   - name
   - cnpjNumber
-  - accountsBalances
+  - accounts
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
- accountsBalances:
-    type: array
-    items:
-      $ref: './AccountBalances.yaml'
-    minItems: 1
-    description: Relação de informações de um contratante do serviço de correspondente.
+ accounts:
+    $ref: './AccountBalances.yaml'

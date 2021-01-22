@@ -3,10 +3,9 @@ description: Instituições da Marca
 required:
   - name
   - cnpjNumber
-  - accountsIdentification
+  - accounts
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
-  accountsIdentification:
+  accounts:
     $ref: './AccountIdentification.yaml'
-    description: Objeto agrupador informações de Contas

@@ -3,13 +3,9 @@ description: Instituições da Marca
 required:
   - name
   - cnpjNumber
-  - accountsOverdraftLimits
+  - accounts
 allOf:
   - $ref: './CompanySimple.yaml'  
 properties:
-  accountsOverdraftLimits:
-    type: array
-    items:
+  accounts:
       $ref:  './AccountOverdraftLimits.yaml'
-    minItems: 1      
-    description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente 

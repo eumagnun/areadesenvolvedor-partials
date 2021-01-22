@@ -9,7 +9,7 @@ servers:
   - url: 'http://api.banco.com.br/open-banking/accounts/v1'
 tags:
   - name: Accounts Identification
-  - name: Accounts Balance
+  - name: Accounts Balances
   - name: Accounts Transactions
   - name: Accounts Overdraft Limits
 paths:
@@ -86,10 +86,7 @@ paths:
                 $ref: '#/components/schemas/ResponseAccountOverdraftLimits'                  
 components:
   schemas:
-    ResponseAccountIdentification:
-      $ref: ./schemas/ResponseAccountIdentification.yaml
-    Brand:
-      $ref: './schemas/AccountIdentificationBrand.yaml'    
+
     AccountType:
         $ref: "./schemas/AccountType.yaml"
     AccountSubType:
@@ -100,10 +97,14 @@ components:
       $ref: './schemas/AccountIdentification.yaml'            
     ResponseAccountBalances:
       $ref: ./schemas/ResponseAccountBalances.yaml   
+    ResponseAccountIdentification:
+      $ref: ./schemas/ResponseAccountIdentification.yaml      
     ResponseAccountTransactions:
       $ref: ./schemas/ResponseAccountTransactions.yaml             
     ResponseAccountOverdraftLimits:
       $ref: ./schemas/ResponseAccountOverdraftLimits.yaml    
+    Brand:
+      $ref: './schemas/AccountIdentificationBrand.yaml'          
     Links:
       $ref: ./schemas/Links.yaml
     Meta:
