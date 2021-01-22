@@ -1,0 +1,12 @@
+type: object
+required:
+  - type
+properties:
+  type:
+    $ref: "./BalanceType.yaml"
+  amount:
+    type: number
+    description: Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.
+    maxLength: 12
+  currency:
+    $ref:  "./Currency.yaml"

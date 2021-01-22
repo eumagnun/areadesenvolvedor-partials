@@ -5849,13 +5849,15 @@ This operation does not require authentication
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"identitication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -5991,15 +5993,17 @@ This operation does not require authentication
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsBalances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -6132,36 +6136,38 @@ This operation does not require authentication
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"effectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"authorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"effectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"authorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -6294,15 +6300,17 @@ This operation does not require authentication
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsOverdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"overdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -6848,19 +6856,18 @@ This operation does not require authentication
 <a id="tocSaccountoverdraftlimits"></a>
 <a id="tocsaccountoverdraftlimits"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"overdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
-
-<p>Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente</p>
-
-<h3 id='schemas-metricas-properties'>Properties</h3>
-
+</span></code></pre></div><h3 id='schemas-metricas-properties'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6871,21 +6878,28 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>type</td>
+<td>overdraftLimits</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» type</td>
 <td><a href="#schemaoverdraftlimittype">OverdraftLimitType</a></td>
 <td>true</td>
 <td>none</td>
 <td>Tipo de Transação relativa ao saldo do limite  informado: (vide Enum)<br>valor utilizado do limite do cheque especial<br>valor disponível do limite do cheque especial<br>saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a depositante</td>
 </tr>
 <tr>
-<td>amount</td>
+<td>» amount</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.</td>
 </tr>
 <tr>
-<td>currency</td>
+<td>» currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
 <td>false</td>
 <td>none</td>
@@ -6899,7 +6913,6 @@ This operation does not require authentication
 <a id="schema_AccountPriorityService"></a>
 <a id="tocSaccountpriorityservice"></a>
 <a id="tocsaccountpriorityservice"></a></p>
-
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSFERENCIA_TED_PESSOAL_OU_PRESENCIAL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CADASTRO"</span><span class="p">,</span><span class="w">
@@ -7317,12 +7330,14 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="tocsaccountsidentification"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identitication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7338,42 +7353,49 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td>number</td>
+<td>identitication</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» number</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Número da conta</td>
 </tr>
 <tr>
-<td>digitNumber</td>
+<td>» digitNumber</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Número do dígito da conta</td>
 </tr>
 <tr>
-<td>branchCode</td>
+<td>» branchCode</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Código da Agência detentora da conta</td>
 </tr>
 <tr>
-<td>ispbCode</td>
+<td>» ispbCode</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Código da Instituição financeira. <br>ISPB: Identificador do participante junto ao Banco Central para o Sistema de Pagamentos Brasileiro – código identificador atribuído a todos os participantes do Sistema de Transferência de Reservas (STR) do Banco Central do Brasil</td>
 </tr>
 <tr>
-<td>type</td>
+<td>» type</td>
 <td><a href="#schemaaccounttype">AccountType</a></td>
 <td>null</td>
 <td>none</td>
 <td>Tipos de contas ofertadas para pessoa natural ou jurídica, p.ex. &#39;CONTA_DEPOSITO_A_VISTA&#39;.<br>Conta de depósito à vista ou Conta corrente - é o tipo mais comum. Nela, o dinheiro fica à sua disposição para ser sacado a qualquer momento. Essa conta não gera rendimentos para o depositante<br>Conta poupança - foi criada para estimular as pessoas a pouparem. O dinheiro que ficar na conta por trinta dias passa a gerar rendimentos, com isenção de imposto de renda para quem declara. Ou seja, o dinheiro “cresce” (rende) enquanto ficar guardado na conta. Cada depósito terá rendimentos de mês em mês, sempre no dia do mês em que o dinheiro tiver sido depositado<br>Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#39;destinada à execução de transações de pagamento em moeda eletrônica realizadas com base em fundos denominados em reais previamente aportados&#39;</td>
 </tr>
 <tr>
-<td>subtype</td>
+<td>» subtype</td>
 <td><a href="#schemaaccountsubtype">AccountSubType</a></td>
 <td>null</td>
 <td>none</td>
@@ -7393,27 +7415,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
-<td><a href="#schemarequestupdatedatetime">RequestUpdateDateTime</a></td>
-<td>null</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<p>and</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7433,7 +7435,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7453,7 +7455,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7473,7 +7475,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7493,7 +7495,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7513,7 +7515,7 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td><em>anonymous</em></td>
+<td>» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -7531,13 +7533,15 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"accountsIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"identitication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -7586,13 +7590,15 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 <a id="tocsaccountsidentificationcompany"></a></p>
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"accountsIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identitication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -7616,11 +7622,11 @@ Conta de pagamento pré-paga: segundo CIRCULAR Nº 3.680, BCB de  2013, é a &#3
 </tr>
 </thead><tbody>
 <tr>
-<td>accountsIdentification</td>
+<td>accounts</td>
 <td><a href="#schemaaccountsidentification">AccountsIdentification</a></td>
 <td>true</td>
 <td>none</td>
-<td>Objeto agrupador informações de Contas</td>
+<td>none</td>
 </tr>
 </tbody></table>
 
@@ -21347,15 +21353,17 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsBalances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"balances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -21414,28 +21422,35 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
-<td>»»» accountsBalances</td>
-<td>[allOf]</td>
+<td>»»» accounts</td>
+<td><a href="#schemarequestupdatedatetime">RequestUpdateDateTime</a></td>
 <td>true</td>
 <td>none</td>
-<td>Relação de informações de um contratante do serviço de correspondente.</td>
+<td>none</td>
 </tr>
 <tr>
-<td>»»»» type</td>
+<td>»»»» balances</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»»»»» type</td>
 <td><a href="#schemabalancetype">BalanceType</a></td>
 <td>true</td>
 <td>none</td>
 <td>tipos de saldo em conta: (vide enum) informados:<br>Saldo disponível para utilização imediata. No caso de conta de depósito a vista, sem considerar cheque especial e investimentos atrelados a conta. Admite saldo negativo.<br>Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial<br>Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta</td>
 </tr>
 <tr>
-<td>»»»» amount</td>
+<td>»»»»» amount</td>
 <td>number</td>
 <td>false</td>
 <td>none</td>
 <td>Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.</td>
 </tr>
 <tr>
-<td>»»»» currency</td>
+<td>»»»»» currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
 <td>false</td>
 <td>none</td>
@@ -21469,13 +21484,15 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsIdentification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"identitication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"digitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTA_DEPOSITO_A_VISTA"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
           </span><span class="p">},</span><span class="w">
@@ -21550,15 +21567,17 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsOverdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"overdraftLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VALOR_UTILIZADO"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -21617,11 +21636,11 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
-<td>»»» accountsOverdraftLimits</td>
-<td>[<a href="#schemaaccountoverdraftlimits">AccountOverdraftLimits</a>]</td>
+<td>»»» accounts</td>
+<td><a href="#schemaaccountoverdraftlimits">AccountOverdraftLimits</a></td>
 <td>true</td>
 <td>none</td>
-<td>Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente</td>
+<td>none</td>
 </tr>
 <tr>
 <td>links</td>
@@ -21651,36 +21670,38 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"accountsTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"effectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"authorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"effectives"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"authorisedPayment"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa A1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -21739,70 +21760,77 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 <td>Companies traz uma lista de todas as instituições da Marca.</td>
 </tr>
 <tr>
-<td>»»» accountsTransactions</td>
-<td>[allOf]</td>
+<td>»»» accounts</td>
+<td><a href="#schemarequestupdatedatetime">RequestUpdateDateTime</a></td>
 <td>true</td>
 <td>none</td>
-<td>Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas</td>
+<td>none</td>
 </tr>
 <tr>
-<td>»»»» effectives</td>
+<td>»»»» transactions</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»»»»» effectives</td>
 <td>[allOf]</td>
 <td>false</td>
 <td>none</td>
 <td>Lista das transações a débito e a crédito efetivadas em conta.</td>
 </tr>
 <tr>
-<td>»»»»» creditDebitIndicator</td>
+<td>»»»»»» creditDebitIndicator</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
 </tr>
 <tr>
-<td>»»»»» type</td>
+<td>»»»»»» type</td>
 <td><a href="#schematransactiontypes">TransactionTypes</a></td>
 <td>null</td>
 <td>none</td>
 <td>Tipo de Transação</td>
 </tr>
 <tr>
-<td>»»»»» additionalInfo</td>
+<td>»»»»»» additionalInfo</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO</td>
 </tr>
 <tr>
-<td>»»»»» amount</td>
+<td>»»»»»» amount</td>
 <td>float</td>
 <td>null</td>
 <td>none</td>
 <td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
 </tr>
 <tr>
-<td>»»»»» currency</td>
+<td>»»»»»» currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
 <td>null</td>
 <td>none</td>
 <td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
 <tr>
-<td>»»»»» transactionDate</td>
+<td>»»»»»» transactionDate</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Data de lançamento da transação</td>
 </tr>
 <tr>
-<td>»»»»» payer</td>
+<td>»»»»»» payer</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Identificação do Pagador da transação</td>
 </tr>
 <tr>
-<td>»»»»» payee</td>
+<td>»»»»»» payee</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
@@ -21822,7 +21850,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21842,7 +21870,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21862,7 +21890,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21882,7 +21910,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21902,7 +21930,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21922,7 +21950,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -21942,63 +21970,63 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»» authorisedPayment</td>
+<td>»»»»» authorisedPayment</td>
 <td>[allOf]</td>
 <td>false</td>
 <td>none</td>
 <td>Lista das Informações relativas aos pagamentos autorizados.</td>
 </tr>
 <tr>
-<td>»»»»» creditDebitIndicator</td>
-<td><a href="#schema#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountstransactions/items/properties/effectives/items/properties/creditdebitindicator">#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsTransactions/items/properties/effectives/items/properties/creditDebitIndicator</a></td>
+<td>»»»»»» creditDebitIndicator</td>
+<td><a href="#schema#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accounts/properties/transactions/items/properties/effectives/items/properties/creditdebitindicator">#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accounts/properties/transactions/items/properties/effectives/items/properties/creditDebitIndicator</a></td>
 <td>null</td>
 <td>none</td>
 <td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
 </tr>
 <tr>
-<td>»»»»» type</td>
+<td>»»»»»» type</td>
 <td><a href="#schematransactiontypes">TransactionTypes</a></td>
 <td>null</td>
 <td>none</td>
 <td>Tipo de Transação</td>
 </tr>
 <tr>
-<td>»»»»» additionalInfo</td>
+<td>»»»»»» additionalInfo</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO</td>
 </tr>
 <tr>
-<td>»»»»» amount</td>
+<td>»»»»»» amount</td>
 <td>float</td>
 <td>null</td>
 <td>none</td>
 <td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
 </tr>
 <tr>
-<td>»»»»» currency</td>
+<td>»»»»»» currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
 <td>null</td>
 <td>none</td>
 <td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
 <tr>
-<td>»»»»» transactionDate</td>
+<td>»»»»»» transactionDate</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Data de lançamento da transação</td>
 </tr>
 <tr>
-<td>»»»»» payer</td>
+<td>»»»»»» payer</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
 <td>Identificação do Pagador da transação</td>
 </tr>
 <tr>
-<td>»»»»» payee</td>
+<td>»»»»»» payee</td>
 <td>string</td>
 <td>null</td>
 <td>none</td>
@@ -22018,7 +22046,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -22038,7 +22066,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -22058,7 +22086,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -22078,7 +22106,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -22098,7 +22126,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>
@@ -22118,7 +22146,7 @@ saldo a descoberto em conta de depósito a vista (relativo ao adiantamento a dep
 </tr>
 </thead><tbody>
 <tr>
-<td>»»»»» <em>anonymous</em></td>
+<td>»»»»»» <em>anonymous</em></td>
 <td>any</td>
 <td>null</td>
 <td>none</td>

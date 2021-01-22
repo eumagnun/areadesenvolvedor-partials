@@ -974,22 +974,29 @@ components:
           $ref: '#/components/schemas/MaximumPrice'
     AccountOverdraftLimits:
       type: object
-      description: Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
       required:
         - requestDateTime
         - updateDateTime
-        - type
+        - overdraftLimits
       allOf:
         - $ref: '#/components/schemas/RequestUpdateDateTime'
       properties:
-        type:
-          $ref: '#/components/schemas/OverdraftLimitType'
-        amount:
-          type: number
-          description: Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.
-          maxLength: 12
-        currency:
-          $ref: '#/components/schemas/Currency'
+        overdraftLimits:
+          type: array
+          items:
+            type: object
+            description: Objeto que define um Limite referente ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
+            required:
+              - type
+            properties:
+              type:
+                $ref: '#/components/schemas/OverdraftLimitType'
+              amount:
+                type: number
+                description: Valor da transação. Expressa em valor monetário com 2 casas decimais. A opção saldo a descoberto é expressa em valor negativo.
+                maxLength: 12
+              currency:
+                $ref: '#/components/schemas/Currency'
     AccountPriorityService:
       type: object
       required:
@@ -1088,49 +1095,57 @@ components:
       example: CONTA_DEPOSITO_A_VISTA
     AccountsIdentification:
       type: object
-      required: null
+      required:
+        - requestDateTime
+        - updateDateTime
+        - identitication
       allOf:
         - $ref: '#/components/schemas/RequestUpdateDateTime'
-        - number
-        - digitNumber
-        - branchCode
-        - ispbCode
-        - type
-        - subtype
       properties:
-        number:
-          type: string
-          maxLength: 8
-          pattern: '\d{8}|^NA$'
-          description: |
-            Número da conta
-          example: '12345678'
-        digitNumber:
-          type: string
-          maxLength: 1
-          pattern: '\d{8}|^NA$'
-          description: |
-            Número do dígito da conta
-          example: '9'
-        branchCode:
-          type: string
-          maxLength: 4
-          pattern: '\d{8}|^NA$'
-          description: |
-            Código da Agência detentora da conta
-          example: '1234'
-        ispbCode:
-          type: string
-          maxLength: 8
-          pattern: '\d{8}|^NA$'
-          description: |
-            Código da Instituição financeira. 
-            ISPB: Identificador do participante junto ao Banco Central para o Sistema de Pagamentos Brasileiro – código identificador atribuído a todos os participantes do Sistema de Transferência de Reservas (STR) do Banco Central do Brasil
-          example: '12345678'
-        type:
-          $ref: '#/components/schemas/AccountType'
-        subtype:
-          $ref: '#/components/schemas/AccountSubType'
+        identitication:
+          type: object
+          required: null
+          allOf:
+            - number
+            - digitNumber
+            - branchCode
+            - ispbCode
+            - type
+            - subtype
+          properties:
+            number:
+              type: string
+              maxLength: 8
+              pattern: '\d{8}|^NA$'
+              description: |
+                Número da conta
+              example: '12345678'
+            digitNumber:
+              type: string
+              maxLength: 1
+              pattern: '\d{8}|^NA$'
+              description: |
+                Número do dígito da conta
+              example: '9'
+            branchCode:
+              type: string
+              maxLength: 4
+              pattern: '\d{8}|^NA$'
+              description: |
+                Código da Agência detentora da conta
+              example: '1234'
+            ispbCode:
+              type: string
+              maxLength: 8
+              pattern: '\d{8}|^NA$'
+              description: |
+                Código da Instituição financeira. 
+                ISPB: Identificador do participante junto ao Banco Central para o Sistema de Pagamentos Brasileiro – código identificador atribuído a todos os participantes do Sistema de Transferência de Reservas (STR) do Banco Central do Brasil
+              example: '12345678'
+            type:
+              $ref: '#/components/schemas/AccountType'
+            subtype:
+              $ref: '#/components/schemas/AccountSubType'
     AccountsIdentificationBrand:
       type: object
       description: Objeto que define a Organização controladora do grupo de instituições financeiras
@@ -1155,13 +1170,12 @@ components:
       required:
         - name
         - cnpjNumber
-        - accountsIdentification
+        - accounts
       allOf:
         - $ref: '#/components/schemas/CompanySimple'
       properties:
-        accountsIdentification:
+        accounts:
           $ref: '#/components/schemas/AccountsIdentification'
-          description: Objeto agrupador informações de Contas
     AccountsIncomeRate:
       type: object
       properties:
@@ -4403,29 +4417,34 @@ components:
                     required:
                       - name
                       - cnpjNumber
-                      - accountsBalances
+                      - accounts
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
-                      accountsBalances:
-                        type: array
-                        items:
-                          type: object
-                          required:
-                            - type
-                          allOf:
-                            - $ref: '#/components/schemas/RequestUpdateDateTime'
-                          properties:
-                            type:
-                              $ref: '#/components/schemas/BalanceType'
-                            amount:
-                              type: number
-                              description: 'Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.'
-                              maxLength: 12
-                            currency:
-                              $ref: '#/components/schemas/Currency'
-                        minItems: 1
-                        description: Relação de informações de um contratante do serviço de correspondente.
+                      accounts:
+                        type: object
+                        required:
+                          - requestDateTime
+                          - updateDateTime
+                          - balances
+                        allOf:
+                          - $ref: '#/components/schemas/RequestUpdateDateTime'
+                        properties:
+                          balances:
+                            type: array
+                            items:
+                              type: object
+                              required:
+                                - type
+                              properties:
+                                type:
+                                  $ref: '#/components/schemas/BalanceType'
+                                amount:
+                                  type: number
+                                  description: 'Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.'
+                                  maxLength: 12
+                                currency:
+                                  $ref: '#/components/schemas/Currency'
                   minItems: 1
                   description: Companies traz uma lista de todas as instituições da Marca.
         links:
@@ -4482,16 +4501,12 @@ components:
                     required:
                       - name
                       - cnpjNumber
-                      - accountsOverdraftLimits
+                      - accounts
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
-                      accountsOverdraftLimits:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/AccountOverdraftLimits'
-                        minItems: 1
-                        description: Lista com Limites referentes ao valor das operações de crédito (cheque especial e Adiantamento a Depositantes) vinculadas à conta de depósito à vista ou conta corrente
+                      accounts:
+                        $ref: '#/components/schemas/AccountOverdraftLimits'
                   minItems: 1
                   description: Companies traz uma lista de todas as instituições da Marca.
         links:
@@ -4530,127 +4545,130 @@ components:
                     required:
                       - name
                       - cnpjNumber
-                      - accountsTransactions
+                      - accounts
                     allOf:
                       - $ref: '#/components/schemas/CompanySimple'
                     properties:
-                      accountsTransactions:
-                        type: array
-                        items:
-                          type: object
-                          description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
-                          required:
-                            - requestDateTime
-                            - updateDateTime
-                            - effectives: null
-                            - authorisedPayment: null
-                          allOf:
-                            - $ref: '#/components/schemas/RequestUpdateDateTime'
-                          properties:
-                            effectives:
-                              type: array
-                              items:
-                                type: object
-                                description: Transações a débito e a crédito efetivadas em conta
-                                required: null
-                                allOf:
-                                  - creditDebitIndicator
-                                  - type
-                                  - amount
-                                  - transactionDate
-                                  - payer
-                                  - payee
-                                properties:
-                                  creditDebitIndicator:
-                                    type: string
-                                    enum:
-                                      - CREDITO
-                                      - DEBITO
-                                    description: |
-                                      Indicador do tipo de lançamento: a crédito ou a débito. 
-                                    example: CREDITO
-                                  type:
-                                    $ref: '#/components/schemas/TransactionTypes'
-                                  additionalInfo:
-                                    type: string
-                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
-                                    maxLength: 30
-                                    pattern: \w*\W*
-                                    example: Empresa A1
-                                  amount:
-                                    type: float
-                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
-                                    maxLength: 12
-                                    pattern: \w*\W*
-                                  currency:
-                                    $ref: '#/components/schemas/Currency'
-                                  transactionDate:
-                                    type: string
-                                    description: Data de lançamento da transação
-                                    maxLength: 10
-                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-                                  payer:
-                                    type: string
-                                    description: Identificação do Pagador da transação
-                                    maxLength: 100
-                                    pattern: \w*\W*
-                                  payee:
-                                    type: string
-                                    description: Identificação do Recebedor da transação
-                                    maxLength: 100
-                                    pattern: \w*\W*
-                              minItems: 1
-                              description: Lista das transações a débito e a crédito efetivadas em conta.
-                            authorisedPayment:
-                              type: array
-                              items:
-                                type: object
-                                description: Informações relativas aos pagamentos autorizados
-                                required: null
-                                allOf:
-                                  - creditDebitIndicator
-                                  - type
-                                  - amount
-                                  - transactionDate
-                                  - payer
-                                  - payee
-                                properties:
-                                  creditDebitIndicator:
-                                    $ref: '#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accountsTransactions/items/properties/effectives/items/properties/creditDebitIndicator'
-                                  type:
-                                    $ref: '#/components/schemas/TransactionTypes'
-                                  additionalInfo:
-                                    type: string
-                                    description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
-                                    maxLength: 30
-                                    pattern: \w*\W*
-                                    example: Empresa A1
-                                  amount:
-                                    type: float
-                                    description: Valor da transação. Expressa em valor monetário com 2 casas decimais
-                                    maxLength: 12
-                                    pattern: \w*\W*
-                                  currency:
-                                    $ref: '#/components/schemas/Currency'
-                                  transactionDate:
-                                    type: string
-                                    description: Data de lançamento da transação
-                                    maxLength: 10
-                                    pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-                                  payer:
-                                    type: string
-                                    description: Identificação do Pagador da transação
-                                    maxLength: 100
-                                    pattern: \w*\W*
-                                  payee:
-                                    type: string
-                                    description: Identificação do Recebedor da transação
-                                    maxLength: 100
-                                    pattern: \w*\W*
-                              minItems: 1
-                              description: Lista das Informações relativas aos pagamentos autorizados.
-                        minItems: 1
-                        description: Objeto agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
+                      accounts:
+                        type: object
+                        required:
+                          - requestDateTime
+                          - updateDateTime
+                          - transactions
+                        allOf:
+                          - $ref: '#/components/schemas/RequestUpdateDateTime'
+                        properties:
+                          transactions:
+                            type: array
+                            items:
+                              type: object
+                              description: Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas
+                              required:
+                                - effectives: null
+                                - authorisedPayment: null
+                              properties:
+                                effectives:
+                                  type: array
+                                  items:
+                                    type: object
+                                    description: Transações a débito e a crédito efetivadas em conta
+                                    required: null
+                                    allOf:
+                                      - creditDebitIndicator
+                                      - type
+                                      - amount
+                                      - transactionDate
+                                      - payer
+                                      - payee
+                                    properties:
+                                      creditDebitIndicator:
+                                        type: string
+                                        enum:
+                                          - CREDITO
+                                          - DEBITO
+                                        description: |
+                                          Indicador do tipo de lançamento: a crédito ou a débito. 
+                                        example: CREDITO
+                                      type:
+                                        $ref: '#/components/schemas/TransactionTypes'
+                                      additionalInfo:
+                                        type: string
+                                        description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                        maxLength: 30
+                                        pattern: \w*\W*
+                                        example: Empresa A1
+                                      amount:
+                                        type: float
+                                        description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                        maxLength: 12
+                                        pattern: \w*\W*
+                                      currency:
+                                        $ref: '#/components/schemas/Currency'
+                                      transactionDate:
+                                        type: string
+                                        description: Data de lançamento da transação
+                                        maxLength: 10
+                                        pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                      payer:
+                                        type: string
+                                        description: Identificação do Pagador da transação
+                                        maxLength: 100
+                                        pattern: \w*\W*
+                                      payee:
+                                        type: string
+                                        description: Identificação do Recebedor da transação
+                                        maxLength: 100
+                                        pattern: \w*\W*
+                                  minItems: 1
+                                  description: Lista das transações a débito e a crédito efetivadas em conta.
+                                authorisedPayment:
+                                  type: array
+                                  items:
+                                    type: object
+                                    description: Informações relativas aos pagamentos autorizados
+                                    required: null
+                                    allOf:
+                                      - creditDebitIndicator
+                                      - type
+                                      - amount
+                                      - transactionDate
+                                      - payer
+                                      - payee
+                                    properties:
+                                      creditDebitIndicator:
+                                        $ref: '#/paths/~1accounts~1v1~1accounts-transactions/get/responses/200/content/application~1json/schema/properties/data/properties/brand/properties/companies/items/properties/accounts/properties/transactions/items/properties/effectives/items/properties/creditDebitIndicator'
+                                      type:
+                                        $ref: '#/components/schemas/TransactionTypes'
+                                      additionalInfo:
+                                        type: string
+                                        description: 'Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO'
+                                        maxLength: 30
+                                        pattern: \w*\W*
+                                        example: Empresa A1
+                                      amount:
+                                        type: float
+                                        description: Valor da transação. Expressa em valor monetário com 2 casas decimais
+                                        maxLength: 12
+                                        pattern: \w*\W*
+                                      currency:
+                                        $ref: '#/components/schemas/Currency'
+                                      transactionDate:
+                                        type: string
+                                        description: Data de lançamento da transação
+                                        maxLength: 10
+                                        pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+                                      payer:
+                                        type: string
+                                        description: Identificação do Pagador da transação
+                                        maxLength: 100
+                                        pattern: \w*\W*
+                                      payee:
+                                        type: string
+                                        description: Identificação do Recebedor da transação
+                                        maxLength: 100
+                                        pattern: \w*\W*
+                                  minItems: 1
+                                  description: Lista das Informações relativas aos pagamentos autorizados.
                   minItems: 1
                   description: Companies traz uma lista de todas as instituições da Marca.
         links:
