@@ -9,4 +9,4 @@ properties:
   overdraftLimits:
     type: array
     items:  
-      $ref: './OverDraftLImits.yaml'
+      $ref: './OverdraftLimits.yaml'
